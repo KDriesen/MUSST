@@ -1,0 +1,1 @@
+Better performance is obtained replacing blas and lapack libraries by the ones provided by the system (ubuntu -> /usr/lib/atlas-base/atlas/ [libblas.a, liblapack.a])

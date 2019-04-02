@@ -1,0 +1,56 @@
+/ALGEN
+/CHLSK
+/FFTW3
+/GPLOT
+/INTPL
+/MINIM
+/RANDM
+/SURFS
+/TCHEV
+
+**/out/*
+**/sur/*
+**/doc/*
+**/mat/*
+**/cfg/*
+
+**/arch
+**/div
+**/build
+**/tmp
+**/vgd
+**/zip
+**/odg
+**/gen
+
+**/gpf/*.png
+**/gpf/*.txt
+
+# HSL
+libhsl_ma48.a
+hsl_*
+
+# archives
+*.7z
+
+# latex files
+*.tex
+
+# Compiled Object files
+*.o
+*.mod
+
+# geany projects
+*.geany
+
+# Executables
+prg
+main
+
+# Misc
+test.f90
+fort.*
+/MUSST/save.sh
+/MUSST/mail_save.sh
+
+
