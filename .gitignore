@@ -48,6 +48,7 @@ prg
 main
 
 # Misc
+!.gitignore
 test.f90
 fort.*
 /MUSST/save.sh
