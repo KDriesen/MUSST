@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="MUSST – A modern Fortran MUltiScale Simulation Tribology solver">
+    
+    <meta name="author" content="Noël Brunetière - Arthur Francisco" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>mod_test_musst.f90 &ndash; MUSST</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+    <link href="../css/user.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MUSST </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/main.html">Program</a></li>
+      
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/main.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>mod_test_musst.f90
+    <small>Source File</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Noël Brunetière<br/>&emsp;Arthur Francisco</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> April,17 2017</li>
+     
+     
+     
+    <li><i class="fa fa-barcode"></i> 1.0.0</li>
+    
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title=" 3.7% of total for source files.">354 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/mod_test_musst.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+  
+     <li class="active">mod_test_musst.f90</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-0">Modules</a></h3></div>
+  <div id="mods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/test_musst.html">test_musst</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/mod_test_musst.f90.html#src">mod_test_musst.f90</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">This file depends on</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: sourcefile~~mod_test_musst.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefilemod_test_musstf90EfferentGraph" width="641pt" height="352pt"
+ viewBox="0.00 0.00 641.00 352.17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph" class="graph" transform="scale(.6922 .6922) rotate(0) translate(4 504.7537)">
+<title>sourcefile~~mod_test_musst.f90~~EfferentGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-504.7537 922,-504.7537 922,4 -4,4"/>
+<!-- sourcefile~mod_test_musst.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~mod_test_musst.f90</title>
+<polygon fill="none" stroke="#000000" points="918,-126.5908 812,-126.5908 812,-102.5908 918,-102.5908 918,-126.5908"/>
+<text text-anchor="middle" x="865" y="-112.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">mod_test_musst.f90</text>
+</g>
+<!-- sourcefile~mod_inout_files.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~mod_inout_files.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node2"><a xlink:href=".././sourcefile/mod_inout_files.f90.html" xlink:title="mod_inout_files.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="776,-126.5908 673,-126.5908 673,-102.5908 776,-102.5908 776,-126.5908"/>
+<text text-anchor="middle" x="724.5" y="-112.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_inout_files.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_inout_files.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_inout_files.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M811.883,-114.5908C803.596,-114.5908 794.9703,-114.5908 786.5064,-114.5908"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="786.2964,-111.0909 776.2963,-114.5908 786.2963,-118.0909 786.2964,-111.0909"/>
+</g>
+<!-- sourcefile~mod_num_par.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~mod_num_par.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node3"><a xlink:href=".././sourcefile/mod_num_par.f90.html" xlink:title="mod_num_par.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="384,-326.5908 287,-326.5908 287,-302.5908 384,-302.5908 384,-326.5908"/>
+<text text-anchor="middle" x="335.5" y="-312.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_num_par.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_num_par.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_num_par.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M724.5,-272.5908C646.3203,-322.6134 675.5444,-394.2099 591.5,-433.5908"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M591.5,-433.5908C554.7822,-450.7958 457.2658,-386.7292 421,-368.5908 399.9348,-358.055 377.4674,-343.7319 360.8525,-332.4844"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="362.4961,-329.3675 352.2702,-326.5958 358.5357,-335.1394 362.4961,-329.3675"/>
+</g>
+<!-- sourcefile~mod_ms_film.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~mod_ms_film.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node4"><a xlink:href=".././sourcefile/mod_ms_film.f90.html" xlink:title="mod_ms_film.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="637,-284.5908 546,-284.5908 546,-260.5908 637,-260.5908 637,-284.5908"/>
+<text text-anchor="middle" x="591.5" y="-270.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_ms_film.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_ms_film.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_ms_film.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M724.5,-272.5908C702.0208,-286.9739 672.7303,-288.37 647.3604,-285.5738"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="647.5019,-282.0616 637.1256,-284.2024 646.5721,-288.9996 647.5019,-282.0616"/>
+</g>
+<!-- sourcefile~mod_surfile.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~mod_surfile.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node5"><a xlink:href=".././sourcefile/mod_surfile.f90.html" xlink:title="mod_surfile.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="377.5,-84.5908 293.5,-84.5908 293.5,-60.5908 377.5,-60.5908 377.5,-84.5908"/>
+<text text-anchor="middle" x="335.5" y="-70.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_surfile.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_surfile.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_surfile.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M819.0377,-102.5513C805.2717,-99.2695 790.0889,-95.9682 776,-93.5908 694.7155,-79.8746 673.7042,-80.737 591.5,-74.5908"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M591.5,-74.5908C521.3481,-67.7981 439.8783,-68.6533 388.0291,-70.288"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="387.6244,-66.7995 377.7481,-70.6347 387.8604,-73.7956 387.6244,-66.7995"/>
+</g>
+<!-- sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~mod_data_arch.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node6"><a xlink:href=".././sourcefile/mod_data_arch.f90.html" xlink:title="mod_data_arch.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="104,-161.5908 0,-161.5908 0,-137.5908 104,-137.5908 104,-161.5908"/>
+<text text-anchor="middle" x="52" y="-147.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_data_arch.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M465.5,-472.5908C345.6047,-481.4505 300.1394,-530.8925 195,-472.5908"/>
+</g>
+<!-- sourcefile~mod_solver.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~mod_solver.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node7"><a xlink:href=".././sourcefile/mod_solver.f90.html" xlink:title="mod_solver.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="378,-162.5908 293,-162.5908 293,-138.5908 378,-138.5908 378,-162.5908"/>
+<text text-anchor="middle" x="335.5" y="-148.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_solver.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_solver.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_solver.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M857.4982,-126.9391C838.8358,-156.6114 787.267,-232.4299 724.5,-272.5908"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M724.5,-272.5908C711.5014,-280.9078 606.2598,-237.0945 591.5,-232.5908"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M591.5,-232.5908C549.94,-219.9095 550.4776,-194.39 510,-178.5908 470.8481,-163.309 423.6346,-156.3645 388.1959,-153.2103"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="388.3162,-149.7086 378.0645,-152.3827 387.7463,-156.6854 388.3162,-149.7086"/>
+</g>
+<!-- sourcefile~mod_film.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~mod_film.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node8"><a xlink:href=".././sourcefile/mod_film.f90.html" xlink:title="mod_film.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="501.5,-244.5908 429.5,-244.5908 429.5,-220.5908 501.5,-220.5908 501.5,-244.5908"/>
+<text text-anchor="middle" x="465.5" y="-230.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_film.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_film.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_film.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M591.5,-232.5908C565.8697,-224.7702 535.9173,-224.4341 511.6479,-226.2104"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="511.2816,-222.729 501.6238,-227.0854 511.8903,-229.7025 511.2816,-222.729"/>
+</g>
+<!-- sourcefile~mod_data.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~mod_data.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node9"><a xlink:href=".././sourcefile/mod_data.f90.html" xlink:title="mod_data.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="374,-444.5908 297,-444.5908 297,-420.5908 374,-420.5908 374,-444.5908"/>
+<text text-anchor="middle" x="335.5" y="-430.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_data.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_data.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~mod_test_musst.f90&#45;&gt;sourcefile~mod_data.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M591.5,-433.5908C538.2702,-458.1475 523.9618,-468.2708 465.5,-472.5908"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M465.5,-472.5908C430.6275,-475.1677 392.6008,-461.3795 366.7372,-449.2965"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="367.9766,-446.0075 357.4523,-444.7868 364.9183,-452.3041 367.9766,-446.0075"/>
+</g>
+<!-- sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_ms_film.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_ms_film.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M718.8175,-126.8766C706.7343,-151.9542 676.3459,-209.7681 637,-246.5908 633.6973,-249.6817 629.9613,-252.5527 626.0847,-255.1726"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="624.1479,-252.2552 617.4878,-260.495 627.8326,-258.207 624.1479,-252.2552"/>
+</g>
+<!-- sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_surfile.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_surfile.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M697.1498,-102.5377C670.7207,-91.8184 629.2504,-77.4133 591.5,-74.5908"/>
+</g>
+<!-- sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M709.8194,-102.3935C693.2817,-89.4409 665.0368,-69.6174 637,-60.5908 449.5486,-.2399 384.6256,23.5354 195,-29.5908"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M195,-29.5908C170.4274,-37.6549 161.4415,-34.1304 140,-48.5908 107.9707,-70.1918 80.4558,-106.2854 65.0824,-128.9688"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="62.0328,-127.2353 59.4395,-137.5079 67.8728,-131.0946 62.0328,-127.2353"/>
+</g>
+<!-- sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_film.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_film.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M697.758,-126.7744C650.9138,-148.1166 554.0035,-192.2688 501.3842,-216.242"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="499.7455,-213.1424 492.0966,-220.4735 502.6477,-219.5125 499.7455,-213.1424"/>
+</g>
+<!-- sourcefile~mod_vtk.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~mod_vtk.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node12"><a xlink:href=".././sourcefile/mod_vtk.f90.html" xlink:title="mod_vtk.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="626.5,-126.5908 556.5,-126.5908 556.5,-102.5908 626.5,-102.5908 626.5,-126.5908"/>
+<text text-anchor="middle" x="591.5" y="-112.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_vtk.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_vtk.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~mod_inout_files.f90&#45;&gt;sourcefile~mod_vtk.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M672.6979,-114.5908C660.8592,-114.5908 648.3662,-114.5908 636.8237,-114.5908"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="636.5366,-111.0909 626.5366,-114.5908 636.5365,-118.0909 636.5366,-111.0909"/>
+</g>
+<!-- sourcefile~mod_num_par.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~mod_num_par.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#ffbf00" stroke-dasharray="5,2" d="M286.755,-321.736C259.2751,-324.0927 224.6214,-324.2356 195,-315.5908"/>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_num_par.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_num_par.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M579.7057,-284.6873C558.9351,-304.8792 513.467,-344.2595 465.5,-354.5908"/>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M465.5,-354.5908C447.7702,-358.4095 404.5117,-343.2437 372.7444,-330.5013"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="373.8768,-327.1833 363.2955,-326.6483 371.2336,-333.6652 373.8768,-327.1833"/>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_surfile.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_surfile.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M567.639,-260.4485C560.4446,-256.3981 552.6875,-251.6245 546,-246.5908 528.1709,-233.1707 528.5747,-223.9584 510,-211.5908 492.0998,-199.6723 483.7036,-204.0406 465.5,-192.5908"/>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M465.5,-192.5908C419.9865,-163.9636 375.9309,-118.3763 352.6211,-92.4096"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="355.0566,-89.8805 345.8065,-84.7147 349.8162,-94.5215 355.0566,-89.8805"/>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M465.5,-354.5908C346.7577,-380.1658 311.6012,-349.62 195,-315.5908"/>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_solver.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_solver.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M465.5,-192.5908C442.0312,-177.8293 412.8899,-167.7916 388.1497,-161.2414"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="388.7532,-157.784 378.2007,-158.7294 387.0395,-164.571 388.7532,-157.784"/>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_film.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_film.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M553.6958,-260.5895C540.3965,-256.3675 525.3036,-251.5761 511.4103,-247.1655"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="512.1389,-243.7247 501.5486,-244.0348 510.0208,-250.3966 512.1389,-243.7247"/>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_data.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_data.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M465.5,-431.5908C439.963,-441.7248 409.3185,-442.4474 384.1977,-440.4176"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="384.4492,-436.9256 374.1569,-439.4393 383.7703,-443.8926 384.4492,-436.9256"/>
+</g>
+<!-- sourcefile~mod_fluid.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~mod_fluid.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node11"><a xlink:href=".././sourcefile/mod_fluid.f90.html" xlink:title="mod_fluid.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="232.5,-367.5908 157.5,-367.5908 157.5,-343.5908 232.5,-343.5908 232.5,-367.5908"/>
+<text text-anchor="middle" x="195" y="-353.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_fluid.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_fluid.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_fluid.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M586.8667,-284.8807C573.8236,-317.3382 533.2663,-404.6989 465.5,-431.5908"/>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M465.5,-431.5908C460.2048,-433.6921 318.5206,-392.234 242.3757,-369.6869"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="243.1164,-366.256 232.534,-366.77 241.1272,-372.9674 243.1164,-366.256"/>
+</g>
+<!-- sourcefile~mod_mesh.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~mod_mesh.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node14"><a xlink:href=".././sourcefile/mod_mesh.f90.html" xlink:title="mod_mesh.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="376.5,-284.5908 294.5,-284.5908 294.5,-260.5908 376.5,-260.5908 376.5,-284.5908"/>
+<text text-anchor="middle" x="335.5" y="-270.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_mesh.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_mesh.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_mesh.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M545.7323,-272.5908C501.0747,-272.5908 433.2584,-272.5908 386.7995,-272.5908"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="386.6442,-269.0909 376.6441,-272.5908 386.6441,-276.0909 386.6442,-269.0909"/>
+</g>
+<!-- sourcefile~mod_bspline.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~mod_bspline.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node18"><a xlink:href=".././sourcefile/mod_bspline.f90.html" xlink:title="mod_bspline.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="510,-324.5908 421,-324.5908 421,-300.5908 510,-300.5908 510,-324.5908"/>
+<text text-anchor="middle" x="465.5" y="-310.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_bspline.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_bspline.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~mod_ms_film.f90&#45;&gt;sourcefile~mod_bspline.f90</title>
+<path fill="none" stroke="#7fff00" stroke-dasharray="5,2" d="M553.6958,-284.5921C540.9798,-288.629 526.6241,-293.1863 513.245,-297.4337"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="512.1852,-294.0979 503.713,-300.4597 514.3033,-300.7698 512.1852,-294.0979"/>
+</g>
+<!-- sourcefile~mod_surfile.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~mod_surfile.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#00ff3f" stroke-dasharray="5,2" d="M308.3632,-60.4656C273.9269,-45.747 216.4315,-23.5865 195,-29.5908"/>
+</g>
+<!-- sourcefile~mod_sort_arrays.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~mod_sort_arrays.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node19"><a xlink:href=".././sourcefile/mod_sort_arrays.f90.html" xlink:title="mod_sort_arrays.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="250,-81.5908 140,-81.5908 140,-57.5908 250,-57.5908 250,-81.5908"/>
+<text text-anchor="middle" x="195" y="-67.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_sort_arrays.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_surfile.f90&#45;&gt;sourcefile~mod_sort_arrays.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~mod_surfile.f90&#45;&gt;sourcefile~mod_sort_arrays.f90</title>
+<path fill="none" stroke="#00ff3f" stroke-dasharray="5,2" d="M293.3454,-71.6907C282.9486,-71.4687 271.5688,-71.2257 260.3561,-70.9863"/>
+<polygon fill="#00ff3f" stroke="#00ff3f" points="260.2111,-67.4825 250.1387,-70.7681 260.0616,-74.4809 260.2111,-67.4825"/>
+</g>
+<!-- sourcefile~mod_solver.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~mod_solver.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#003fff" stroke-dasharray="5,2" d="M297.168,-138.5338C282.5619,-134.5221 265.6621,-130.5735 250,-128.5908 201.4982,-122.4508 188.5539,-122.8777 140,-128.5908 128.0569,-129.9961 115.3864,-132.4392 103.4919,-135.1735"/>
+<polygon fill="#003fff" stroke="#003fff" points="102.6214,-131.783 93.7159,-137.5226 104.2569,-138.5893 102.6214,-131.783"/>
+</g>
+<!-- sourcefile~mod_gen_par.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~mod_gen_par.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node10"><a xlink:href=".././sourcefile/mod_gen_par.f90.html" xlink:title="mod_gen_par.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="243,-161.5908 147,-161.5908 147,-137.5908 243,-137.5908 243,-161.5908"/>
+<text text-anchor="middle" x="195" y="-147.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_gen_par.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_solver.f90&#45;&gt;sourcefile~mod_gen_par.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~mod_solver.f90&#45;&gt;sourcefile~mod_gen_par.f90</title>
+<path fill="none" stroke="#003fff" stroke-dasharray="5,2" d="M292.9641,-150.2881C280.478,-150.1992 266.6008,-150.1004 253.3109,-150.0058"/>
+<polygon fill="#003fff" stroke="#003fff" points="253.32,-146.5059 243.2953,-149.9345 253.2701,-153.5057 253.32,-146.5059"/>
+</g>
+<!-- sourcefile~superlu.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~superlu.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node13"><a xlink:href=".././sourcefile/superlu.f90.html" xlink:title="superlu.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="227,-287.5908 163,-287.5908 163,-263.5908 227,-263.5908 227,-287.5908"/>
+<text text-anchor="middle" x="195" y="-273.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">superlu.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_solver.f90&#45;&gt;sourcefile~superlu.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~mod_solver.f90&#45;&gt;sourcefile~superlu.f90</title>
+<path fill="none" stroke="#003fff" stroke-dasharray="5,2" d="M298.1125,-162.6902C293.6923,-165.1646 289.5125,-168.1064 286,-171.5908 257.454,-199.9089 279.058,-226.7983 250,-254.5908 246.0298,-258.3881 241.3022,-261.5165 236.3103,-264.0897"/>
+<polygon fill="#003fff" stroke="#003fff" points="234.8735,-260.898 227.1457,-268.146 237.7067,-267.2991 234.8735,-260.898"/>
+</g>
+<!-- sourcefile~dmumps_struc.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~dmumps_struc.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node15"><a xlink:href=".././sourcefile/dmumps_struc.f90.html" xlink:title="dmumps_struc.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="243.5,-245.5908 146.5,-245.5908 146.5,-221.5908 243.5,-221.5908 243.5,-245.5908"/>
+<text text-anchor="middle" x="195" y="-231.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">dmumps_struc.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_solver.f90&#45;&gt;sourcefile~dmumps_struc.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~mod_solver.f90&#45;&gt;sourcefile~dmumps_struc.f90</title>
+<path fill="none" stroke="#003fff" stroke-dasharray="5,2" d="M301.3861,-162.652C296.0135,-165.2213 290.6912,-168.2009 286,-171.5908 266.3448,-185.7937 269.9111,-198.7489 250,-212.5908 247.7564,-214.1505 245.3815,-215.6135 242.9274,-216.983"/>
+<polygon fill="#003fff" stroke="#003fff" points="241.1754,-213.9455 233.786,-221.5381 244.2974,-220.2107 241.1754,-213.9455"/>
+</g>
+<!-- sourcefile~umfpack.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~umfpack.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node17"><a xlink:href=".././sourcefile/umfpack.f90.html" xlink:title="umfpack.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="229.5,-203.5908 160.5,-203.5908 160.5,-179.5908 229.5,-179.5908 229.5,-203.5908"/>
+<text text-anchor="middle" x="195" y="-189.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">umfpack.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_solver.f90&#45;&gt;sourcefile~umfpack.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~mod_solver.f90&#45;&gt;sourcefile~umfpack.f90</title>
+<path fill="none" stroke="#003fff" stroke-dasharray="5,2" d="M294.1053,-162.6704C277.0536,-167.6463 257.2567,-173.4234 239.8601,-178.5"/>
+<polygon fill="#003fff" stroke="#003fff" points="238.5526,-175.2355 229.9334,-181.3967 240.5135,-181.9552 238.5526,-175.2355"/>
+</g>
+<!-- sourcefile~mod_solver.f90&#45;&gt;sourcefile~mod_sort_arrays.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~mod_solver.f90&#45;&gt;sourcefile~mod_sort_arrays.f90</title>
+<path fill="none" stroke="#003fff" stroke-dasharray="5,2" d="M318.2241,-138.5305C301.2376,-126.9012 274.3838,-109.1219 250,-95.5908 244.0433,-92.2853 237.5968,-88.995 231.2855,-85.9221"/>
+<polygon fill="#003fff" stroke="#003fff" points="232.7415,-82.7388 222.2081,-81.5989 229.7315,-89.0587 232.7415,-82.7388"/>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_num_par.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_num_par.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M451.7075,-244.7389C436.2421,-257.9434 410.0384,-279.0934 385,-293.5908 382.2129,-295.2046 379.2779,-296.7648 376.2857,-298.2566"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="374.7903,-295.092 367.2274,-302.5117 377.7666,-301.4278 374.7903,-295.092"/>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_surfile.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_surfile.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M438.6264,-220.3961C432.2886,-216.626 425.9456,-212.0106 421,-206.5908 395.5358,-178.685 405.5834,-161.2686 385,-129.5908 376.3503,-116.2789 364.8044,-102.8036 355.0393,-92.2995"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="357.4254,-89.7298 347.9964,-84.8981 352.3543,-94.5552 357.4254,-89.7298"/>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge37" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M429.2418,-226.6603C402.6255,-223.7124 365.9588,-222.6221 335.5,-232.5908"/>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M335.5,-232.5908C313.104,-239.9207 305.0234,-237.6833 286,-251.5908 265.3237,-266.7067 270.9294,-281.8273 250,-296.5908 228.8668,-311.4981 219.8263,-322.8362 195,-315.5908"/>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_solver.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge38" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_solver.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M442.1789,-220.385C435.1433,-216.3321 427.5531,-211.5729 421,-206.5908 403.2357,-193.0851 403.5889,-183.937 385,-171.5908 382.6307,-170.0172 380.1241,-168.5206 377.5466,-167.1052"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="379.1126,-163.9751 368.606,-162.6106 375.9685,-170.2293 379.1126,-163.9751"/>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_data.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge39" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_data.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M455.5747,-244.9814C446.2974,-256.7383 432.2292,-275.023 421,-291.5908 392.9829,-332.9277 363.4505,-383.3958 347.4755,-411.3595"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="344.315,-409.8371 342.4151,-420.2602 350.4003,-413.2968 344.315,-409.8371"/>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_fluid.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_fluid.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M335.5,-232.5908C313.104,-239.9207 303.203,-235.4859 286,-251.5908 258.1271,-277.6845 276.8737,-302.4692 250,-329.5908 246.7337,-332.8872 242.9685,-335.818 238.9718,-338.4115"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="236.9034,-335.5622 229.9564,-343.5616 240.3756,-341.6404 236.9034,-335.5622"/>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_mesh.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_mesh.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M429.2878,-243.733C415.3596,-248.0186 399.2214,-252.9842 384.2999,-257.5755"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="383.2339,-254.2415 374.7054,-260.5276 385.2925,-260.9319 383.2339,-254.2415"/>
+</g>
+<!-- sourcefile~mod_elements.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~mod_elements.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node16"><a xlink:href=".././sourcefile/mod_elements.f90.html" xlink:title="mod_elements.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="385,-204.5908 286,-204.5908 286,-180.5908 385,-180.5908 385,-204.5908"/>
+<text text-anchor="middle" x="335.5" y="-190.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_elements.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_elements.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~mod_film.f90&#45;&gt;sourcefile~mod_elements.f90</title>
+<path fill="none" stroke="#7f00ff" stroke-dasharray="5,2" d="M429.2878,-221.4486C415.3596,-217.163 399.2214,-212.1974 384.2999,-207.6061"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="385.2925,-204.2497 374.7054,-204.654 383.2339,-210.9402 385.2925,-204.2497"/>
+</g>
+<!-- sourcefile~mod_data.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge41" class="edge">
+<title>sourcefile~mod_data.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#ff00bf" stroke-dasharray="5,2" d="M309.5218,-444.6467C274.6172,-460.0552 214.6846,-483.5063 195,-472.5908"/>
+<path fill="none" stroke="#ff00bf" stroke-dasharray="5,2" d="M195,-472.5908C82.9124,-410.4363 58.5309,-234.495 53.3562,-171.9766"/>
+<polygon fill="#ff00bf" stroke="#ff00bf" points="56.8226,-171.3915 52.5966,-161.676 49.8416,-171.9063 56.8226,-171.3915"/>
+</g>
+<!-- sourcefile~mod_data.f90&#45;&gt;sourcefile~mod_fluid.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge40" class="edge">
+<title>sourcefile~mod_data.f90&#45;&gt;sourcefile~mod_fluid.f90</title>
+<path fill="none" stroke="#ff00bf" stroke-dasharray="5,2" d="M312.2628,-420.5514C303.951,-416.2012 294.5316,-411.2211 286,-406.5908 265.5324,-395.4827 242.6673,-382.6665 224.9771,-372.6607"/>
+<polygon fill="#ff00bf" stroke="#ff00bf" points="226.6638,-369.5937 216.238,-367.7084 223.2126,-375.6838 226.6638,-369.5937"/>
+</g>
+<!-- sourcefile~mod_gen_par.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge42" class="edge">
+<title>sourcefile~mod_gen_par.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M146.9853,-149.5908C136.4246,-149.5908 125.0949,-149.5908 114.0697,-149.5908"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="114.0609,-146.0909 104.0609,-149.5908 114.0608,-153.0909 114.0609,-146.0909"/>
+</g>
+<!-- sourcefile~mod_fluid.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge43" class="edge">
+<title>sourcefile~mod_fluid.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#ff9900" stroke-dasharray="5,2" d="M160.1374,-343.4676C152.8814,-339.8115 145.713,-335.2293 140,-329.5908 93.5818,-283.778 67.9533,-208.5195 57.5606,-171.5207"/>
+<polygon fill="#ff9900" stroke="#ff9900" points="60.9078,-170.4902 54.923,-161.7476 54.1496,-172.3141 60.9078,-170.4902"/>
+</g>
+<!-- sourcefile~mod_ir_vtk.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~mod_ir_vtk.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~EfferentGraph_node20"><a xlink:href=".././sourcefile/mod_ir_vtk.f90.html" xlink:title="mod_ir_vtk.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="506.5,-126.5908 424.5,-126.5908 424.5,-102.5908 506.5,-102.5908 506.5,-126.5908"/>
+<text text-anchor="middle" x="465.5" y="-112.1908" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">mod_ir_vtk.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~mod_vtk.f90&#45;&gt;sourcefile~mod_ir_vtk.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge44" class="edge">
+<title>sourcefile~mod_vtk.f90&#45;&gt;sourcefile~mod_ir_vtk.f90</title>
+<path fill="none" stroke="#cbff00" stroke-dasharray="5,2" d="M556.402,-114.5908C544.1004,-114.5908 530.0202,-114.5908 516.6744,-114.5908"/>
+<polygon fill="#cbff00" stroke="#cbff00" points="516.6536,-111.0909 506.6536,-114.5908 516.6535,-118.0909 516.6536,-111.0909"/>
+</g>
+<!-- sourcefile~mod_mesh.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge45" class="edge">
+<title>sourcefile~mod_mesh.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#00ff66" stroke-dasharray="5,2" d="M302.78,-284.6748C264.6403,-298.4338 205.4685,-318.6459 195,-315.5908"/>
+</g>
+<!-- sourcefile~mod_elements.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge46" class="edge">
+<title>sourcefile~mod_elements.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#0066ff" stroke-dasharray="5,2" d="M304.8072,-204.7178C298.0177,-208.4269 291.2818,-213.0312 286,-218.5908 259.7025,-246.2715 278.3108,-270.9729 250,-296.5908 230.8236,-313.9432 219.8263,-322.8362 195,-315.5908"/>
+<path fill="none" stroke="#0066ff" stroke-dasharray="5,2" d="M195,-315.5908C170.1737,-308.3455 160.077,-312.8928 140,-296.5908 98.301,-262.7324 71.6426,-203.4939 59.5548,-171.5305"/>
+<polygon fill="#0066ff" stroke="#0066ff" points="62.7258,-170.0096 56.0134,-161.8124 56.1489,-172.4064 62.7258,-170.0096"/>
+</g>
+<!-- sourcefile~mod_sort_arrays.f90&#45;&gt;sourcefile~mod_data_arch.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~EfferentGraph_edge47" class="edge">
+<title>sourcefile~mod_sort_arrays.f90&#45;&gt;sourcefile~mod_data_arch.f90</title>
+<path fill="none" stroke="#ff0098" stroke-dasharray="5,2" d="M167.8525,-81.7096C158.8813,-85.9029 148.9175,-90.7655 140,-95.5908 119.0573,-106.923 96.1533,-121.0352 78.9629,-131.9907"/>
+<polygon fill="#ff0098" stroke="#ff0098" points="77.0598,-129.0533 70.5349,-137.4006 80.841,-134.9442 77.0598,-129.0533"/>
+</g>
+</g>
+</svg>
+</div><script>var pansourcefilemod_test_musstf90EfferentGraph = svgPanZoom('#sourcefilemod_test_musstf90EfferentGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 184,-28 184,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65,-24 0,-24 0,0 65,0 65,-24"/>
+<text text-anchor="middle" x="32.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="180,-24 83,-24 83,0 180,0 180,-24"/>
+<text text-anchor="middle" x="131.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which it depends on. A file
+    is dependent upon another if the latter must be compiled before the former
+    can be. Where possible, edges connecting nodes are given different colours to make them easier to distinguish in large graphs.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+      
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Files dependent on this one</h3>
+      </div>
+      <div class="panel-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: sourcefile~~mod_test_musst.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefilemod_test_musstf90AfferentGraph" width="204pt" height="32pt"
+ viewBox="0.00 0.00 204.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~mod_test_musst.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>sourcefile~~mod_test_musst.f90~~AfferentGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 200,-28 200,4 -4,4"/>
+<!-- sourcefile~mod_test_musst.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~mod_test_musst.f90</title>
+<polygon fill="none" stroke="#000000" points="106,-24 0,-24 0,0 106,0 106,-24"/>
+<text text-anchor="middle" x="53" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">mod_test_musst.f90</text>
+</g>
+<!-- sourcefile~main.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~main.f90</title>
+<g id="a_sourcefile~~mod_test_musst.f90~~AfferentGraph_node2"><a xlink:href=".././sourcefile/main.f90.html" xlink:title="main.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="196,-24 142,-24 142,0 196,0 196,-24"/>
+<text text-anchor="middle" x="169" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">main.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~main.f90&#45;&gt;sourcefile~mod_test_musst.f90 -->
+<g id="sourcefile~~mod_test_musst.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~main.f90&#45;&gt;sourcefile~mod_test_musst.f90</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M141.8032,-12C134.0185,-12 125.1908,-12 116.1952,-12"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="116.0141,-8.5001 106.014,-12 116.014,-15.5001 116.0141,-8.5001"/>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="188pt" height="32pt"
+ viewBox="0.00 0.00 188.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 184,-28 184,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="65,-24 0,-24 0,0 65,0 65,-24"/>
+<text text-anchor="middle" x="32.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="180,-24 83,-24 83,0 180,0 180,-24"/>
+<text text-anchor="middle" x="131.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a file to a file which it depends on. A file
+    is dependent upon another if the latter must be compiled before the former
+    can be. Where possible, edges connecting nodes are given different colours to make them easier to distinguish in large graphs.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+      
+      <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods-1">Modules</a></h3></div>
+  <div id="mods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/test_musst.html">test_musst</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../sourcefile/mod_test_musst.f90.html#src">mod_test_musst.f90</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    <section>
+      <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><span></span><a name="ln-1"></a><span class="c">!! author: Noël Brunetière&lt;br/&gt;&amp;emsp;Arthur Francisco</span>
+<a name="ln-2"></a><span class="c">!! version: 1.0.0</span>
+<a name="ln-3"></a><span class="c">!! date: April,17 2017</span>
+<a name="ln-4"></a><span class="c">!! summary: run different tests</span>
+<a name="ln-5"></a>
+<a name="ln-6"></a><span class="c">!&lt; &lt;span style=&quot;color: #337ab7; font-family: cabin; font-size: 1.5em;&quot;&gt;</span>
+<a name="ln-7"></a><span class="c">!&lt;       **Subroutines to read a batch file and run tests**</span>
+<a name="ln-8"></a><span class="c">!&lt; &lt;/span&gt;</span>
+<a name="ln-9"></a>
+<a name="ln-10"></a><span class="k">module </span><span class="n">test_musst</span>
+<a name="ln-11"></a><span class="k">use </span><span class="n">data_arch</span><span class="p">,</span> <span class="n">only</span> <span class="p">:</span> <span class="n">R4</span><span class="p">,</span> <span class="n">PI_R8</span><span class="p">,</span> <span class="n">get_unit</span>
+<a name="ln-12"></a><span class="k">use </span><span class="n">data_film_hd</span>
+<a name="ln-13"></a><span class="k">use </span><span class="n">ms_film</span>
+<a name="ln-14"></a><span class="k">use </span><span class="n">film</span>
+<a name="ln-15"></a><span class="k">use </span><span class="n">inout_files</span>
+<a name="ln-16"></a><span class="k">use </span><span class="n">surfile</span>
+<a name="ln-17"></a><span class="k">use </span><span class="n">num_param</span>
+<a name="ln-18"></a><span class="k">use </span><span class="n">solver</span>
+<a name="ln-19"></a><span class="k">implicit none</span>
+<a name="ln-20"></a>
+<a name="ln-21"></a><span class="k">private</span>
+<a name="ln-22"></a>
+<a name="ln-23"></a><span class="k">type</span><span class="p">(</span><span class="n">FE_FILM</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">fe_f</span>      <span class="c">!! [[FE_FILM]] *deterministic finite element*</span>
+<a name="ln-24"></a><span class="k">type</span><span class="p">(</span><span class="n">MS_FE_FILM</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ms_fe_f</span>   <span class="c">!! [[MS_FE_FILM]] *multiscale finite element*</span>
+<a name="ln-25"></a><span class="k">type</span><span class="p">(</span><span class="n">DATA_FILM</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">data_f</span>    <span class="c">!! [[DATA_FILM]] *parameter*</span>
+<a name="ln-26"></a><span class="k">type</span><span class="p">(</span><span class="n">NUM_PAR</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">num_pbs</span>   <span class="c">!! [[NUM_PAR]] *parameter for the bottom-scale*</span>
+<a name="ln-27"></a><span class="k">type</span><span class="p">(</span><span class="n">NUM_PAR</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">num_pts</span>   <span class="c">!! [[NUM_PAR]] *parameter for the top-scale*</span>
+<a name="ln-28"></a>
+<a name="ln-29"></a><span class="k">type</span><span class="p">(</span><span class="n">MAT_SOLV</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">mat</span>      <span class="c">!! [[MAT_SOLV]] *solver type matrices*</span>
+<a name="ln-30"></a><span class="k">type</span><span class="p">(</span><span class="n">MS_MAT_SOLV</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ms_mat</span>   <span class="c">!! [[MS_MAT_SOLV]] *solver type matrices*</span>
+<a name="ln-31"></a>
+<a name="ln-32"></a>
+<a name="ln-33"></a><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>                            <span class="kd">::</span> <span class="n">nx</span>        <span class="c">!! *total number of nodes in \(x\) direction*</span>
+<a name="ln-34"></a><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>                            <span class="kd">::</span> <span class="n">ny</span>        <span class="c">!! *total number of nodes in \(y\) direction*</span>
+<a name="ln-35"></a><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>                            <span class="kd">::</span> <span class="n">n_mac</span>     <span class="c">!! *number of macro elements in a direction*</span>
+<a name="ln-36"></a><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>                            <span class="kd">::</span> <span class="n">n_mic</span>     <span class="c">!! *number of nodes in \(x\) or \(y\) direction for the bottom scale*</span>
+<a name="ln-37"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">)</span>                               <span class="kd">::</span> <span class="n">lx</span>        <span class="c">!! *domain size along \(x\)*</span>
+<a name="ln-38"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">)</span>                               <span class="kd">::</span> <span class="n">ly</span>        <span class="c">!! *domain size along \(y\)*</span>
+<a name="ln-39"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">)</span>                               <span class="kd">::</span> <span class="n">sq</span>        <span class="c">!! *roughness height*</span>
+<a name="ln-40"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:,</span> <span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">tab_s</span>     <span class="c">!! *roughness table*</span>
+<a name="ln-41"></a>
+<a name="ln-42"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">bc</span><span class="p">,</span> <span class="n">bf</span>                 <span class="c">!! *boundary conditions*</span>
+<a name="ln-43"></a>
+<a name="ln-44"></a><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R4</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span>                           <span class="c">!! *cpu time*</span>
+<a name="ln-45"></a><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">cend</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">cinit</span>                  <span class="c">!! *real time*</span>
+<a name="ln-46"></a><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">unit_num_res</span>                     <span class="c">!! *file number*</span>
+<a name="ln-47"></a>
+<a name="ln-48"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="kd">::</span> <span class="n">ms_vtk</span>                           <span class="c">!! *output vtk file name*</span>
+<a name="ln-49"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="kd">::</span> <span class="n">prof_ts</span><span class="p">,</span> <span class="n">prof_bs</span>                 <span class="c">!! *ts/bs mat profile name*</span>
+<a name="ln-50"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="kd">::</span> <span class="n">res_file</span>                         <span class="c">!! *result file name*</span>
+<a name="ln-51"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="kd">::</span> <span class="n">surface_file</span>                     <span class="c">!! *surface file name*</span>
+<a name="ln-52"></a><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span> <span class="mi">15</span><span class="p">)</span><span class="kd">::</span> <span class="n">res_dir</span>                          <span class="c">!! *&quot;/out&quot; subdirectory for results*</span>
+<a name="ln-53"></a>
+<a name="ln-54"></a><span class="k">type</span><span class="p">(</span><span class="n">SCALE_SURF</span><span class="p">)</span> <span class="kd">::</span> <span class="n">scal_tmp</span>                          <span class="c">!! *object [[SCALE_SURF]]*</span>
+<a name="ln-55"></a>
+<a name="ln-56"></a><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">test_num</span>                          <span class="c">!! *test number*</span>
+<a name="ln-57"></a><span class="kt">logical</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">save_PeK</span>                          <span class="c">!! *save \(x\) Peclet field*</span>
+<a name="ln-58"></a><span class="kt">logical</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">save_PeE</span>                          <span class="c">!! *save \(y\) Peclet field*</span>
+<a name="ln-59"></a>
+<a name="ln-60"></a><span class="k">public</span> <span class="kd">::</span> <span class="n">run_test</span>
+<a name="ln-61"></a>
+<a name="ln-62"></a><span class="k">contains</span>
+<a name="ln-63"></a>
+<a name="ln-64"></a>
+<a name="ln-65"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-66"></a>   <span class="c">!&lt; @note Subroutine to read the data file ```.dat``` in the &#39;EXEC_MUSST&#39; section and then</span>
+<a name="ln-67"></a>   <span class="c">!        to run the specified test</span>
+<a name="ln-68"></a>   <span class="c">!  @endnote</span>
+<a name="ln-69"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-70"></a>   <span class="k">subroutine </span><span class="n">run_test</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">iunit</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span>
+<a name="ln-71"></a>   <span class="k">implicit none</span>
+<a name="ln-72"></a><span class="k">   </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">),</span>  <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">test</span>   <span class="c">!! *number of the test to be performed*</span>
+<a name="ln-73"></a>   <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">),</span>  <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">iunit</span>  <span class="c">!! *unit number of the data file*</span>
+<a name="ln-74"></a>   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dir</span>    <span class="c">!! *output directory*</span>
+<a name="ln-75"></a>
+<a name="ln-76"></a>      <span class="n">test_num</span> <span class="o">=</span> <span class="n">test</span>
+<a name="ln-77"></a>
+<a name="ln-78"></a>      <span class="k">call </span><span class="n">read_data</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span>
+<a name="ln-79"></a>      <span class="c">! when ```run_test``` has been launched, *SOLVER_TS* has been determined</span>
+<a name="ln-80"></a>      <span class="n">mat</span><span class="p">%</span><span class="n">slv_t</span> <span class="o">=</span> <span class="n">SOLVER_TS</span>
+<a name="ln-81"></a>
+<a name="ln-82"></a>      <span class="k">call </span><span class="n">get_unit</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">)</span> <span class="p">;</span> <span class="k">open</span><span class="p">(</span><span class="n">unit</span> <span class="o">=</span> <span class="n">unit_num_res</span><span class="p">,</span> <span class="k">file</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="n">res_file</span><span class="p">),</span> <span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span>
+<a name="ln-83"></a>
+<a name="ln-84"></a>      <span class="k">select case</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<a name="ln-85"></a>         <span class="k">case</span><span class="p">(</span> <span class="mi">1</span><span class="p">);</span> <span class="k">call </span><span class="n">test_slider_fe</span>
+<a name="ln-86"></a>         <span class="k">case</span><span class="p">(</span><span class="mi">11</span><span class="p">);</span> <span class="k">call </span><span class="n">test_slider_ms</span>
+<a name="ln-87"></a>
+<a name="ln-88"></a>         <span class="k">case</span><span class="p">(</span> <span class="mi">2</span><span class="p">);</span> <span class="k">call </span><span class="n">test_bearing_x_fe</span>
+<a name="ln-89"></a>         <span class="k">case</span><span class="p">(</span> <span class="mi">3</span><span class="p">);</span> <span class="k">call </span><span class="n">test_bearing_y_fe</span>
+<a name="ln-90"></a>
+<a name="ln-91"></a>         <span class="k">case</span><span class="p">(</span> <span class="mi">4</span><span class="p">);</span> <span class="k">call </span><span class="n">test_rough_fe</span>
+<a name="ln-92"></a>         <span class="k">case</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span> <span class="k">call </span><span class="n">test_rough_ms</span>
+<a name="ln-93"></a>
+<a name="ln-94"></a>         <span class="k">case</span><span class="p">(</span> <span class="mi">5</span><span class="p">);</span> <span class="k">call </span><span class="n">test_pocket_fe</span>
+<a name="ln-95"></a>         <span class="k">case </span><span class="n">default</span>
+<a name="ln-96"></a>      <span class="n">endselect</span>
+<a name="ln-97"></a>
+<a name="ln-98"></a>      <span class="k">close</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">)</span>
+<a name="ln-99"></a>
+<a name="ln-100"></a>   <span class="k">return</span>
+<a name="ln-101"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">run_test</span>
+<a name="ln-102"></a>
+<a name="ln-103"></a>
+<a name="ln-104"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-105"></a>   <span class="c">!&lt; @note Subroutine to read the &#39;EXEC_MUSST&#39; section</span>
+<a name="ln-106"></a>   <span class="c">!  @endnote</span>
+<a name="ln-107"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-108"></a>   <span class="k">subroutine </span><span class="n">read_data</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span>
+<a name="ln-109"></a>   <span class="k">implicit none</span>
+<a name="ln-110"></a><span class="k">   </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">),</span>  <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">iunit</span>
+<a name="ln-111"></a>   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">15</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span> <span class="kd">::</span> <span class="n">dir</span>    <span class="c">!! *output directory*</span>
+<a name="ln-112"></a>
+<a name="ln-113"></a>      <span class="n">res_dir</span> <span class="o">=</span> <span class="n">dir</span>
+<a name="ln-114"></a>
+<a name="ln-115"></a>      <span class="k">read</span><span class="p">(</span> <span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
+<a name="ln-116"></a>
+<a name="ln-117"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span><span class="p">,</span> <span class="n">data_f</span><span class="p">%</span><span class="n">h_g</span>
+<a name="ln-118"></a>
+<a name="ln-119"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">V_x</span><span class="p">,</span> <span class="n">data_f</span><span class="p">%</span><span class="n">V_y</span>
+<a name="ln-120"></a>
+<a name="ln-121"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">pb_type</span>
+<a name="ln-122"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">fl</span><span class="p">%</span><span class="n">fluid_type</span>
+<a name="ln-123"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">fl</span><span class="p">%</span><span class="n">p_0</span>
+<a name="ln-124"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">fl</span><span class="p">%</span><span class="n">rho_0</span>
+<a name="ln-125"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">fl</span><span class="p">%</span><span class="n">mu_0</span>
+<a name="ln-126"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">fl</span><span class="p">%</span><span class="n">rg</span>
+<a name="ln-127"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">fl</span><span class="p">%</span><span class="n">lambda</span>
+<a name="ln-128"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">data_f</span><span class="p">%</span><span class="n">fl</span><span class="p">%</span><span class="n">T_0</span>
+<a name="ln-129"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
+<a name="ln-130"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">surface_file</span>
+<a name="ln-131"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">lx</span><span class="p">,</span> <span class="n">ly</span>
+<a name="ln-132"></a>
+<a name="ln-133"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span>
+<a name="ln-134"></a>
+<a name="ln-135"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">n_mac</span>
+<a name="ln-136"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">bc</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span>
+<a name="ln-137"></a>
+<a name="ln-138"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>
+<a name="ln-139"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">num_pts</span>
+<a name="ln-140"></a>
+<a name="ln-141"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">num_pbs</span>
+<a name="ln-142"></a>
+<a name="ln-143"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">sq</span>
+<a name="ln-144"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">s_vtk</span><span class="p">,</span> <span class="n">ms_vtk</span>
+<a name="ln-145"></a>
+<a name="ln-146"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">prof_ts</span>
+<a name="ln-147"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">prof_bs</span>
+<a name="ln-148"></a>      <span class="k">read</span><span class="p">(</span><span class="n">iunit</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="n">res_file</span>
+<a name="ln-149"></a>
+<a name="ln-150"></a>      <span class="n">ms_vtk</span>   <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">ms_vtk</span>  <span class="p">)</span>
+<a name="ln-151"></a>      <span class="n">prof_ts</span>  <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span> <span class="p">)</span>
+<a name="ln-152"></a>      <span class="n">prof_bs</span>  <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">prof_bs</span> <span class="p">)</span>
+<a name="ln-153"></a>      <span class="n">res_file</span> <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">res_file</span><span class="p">)</span>
+<a name="ln-154"></a>
+<a name="ln-155"></a>   <span class="k">return</span>
+<a name="ln-156"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">read_data</span>
+<a name="ln-157"></a>
+<a name="ln-158"></a>
+<a name="ln-159"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-160"></a>   <span class="c">!&lt; @note Subroutine to define the slider geometry</span>
+<a name="ln-161"></a>   <span class="c">!  @endnote</span>
+<a name="ln-162"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-163"></a>   <span class="k">subroutine </span><span class="n">modify_h_slider</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-164"></a>   <span class="k">implicit none</span>
+<a name="ln-165"></a><span class="k">   type</span><span class="p">(</span><span class="n">FE_FILM</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fe_f</span>
+<a name="ln-166"></a>   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">lx</span>
+<a name="ln-167"></a>
+<a name="ln-168"></a>      <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">i</span>
+<a name="ln-169"></a>
+<a name="ln-170"></a>      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">n</span>
+<a name="ln-171"></a>         <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">+</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">*</span> <span class="p">(</span><span class="n">lx</span> <span class="o">-</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">/</span> <span class="n">lx</span>
+<a name="ln-172"></a>      <span class="n">enddo</span>
+<a name="ln-173"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">-</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H1_N</span><span class="p">)</span>
+<a name="ln-174"></a>
+<a name="ln-175"></a>   <span class="k">return</span>
+<a name="ln-176"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">modify_h_slider</span>
+<a name="ln-177"></a>
+<a name="ln-178"></a>
+<a name="ln-179"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-180"></a>   <span class="c">!&lt; @note Subroutine to define the pocket geometry</span>
+<a name="ln-181"></a>   <span class="c">!  @endnote</span>
+<a name="ln-182"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-183"></a>   <span class="k">subroutine </span><span class="n">modify_h_pocket</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-184"></a>   <span class="k">implicit none</span>
+<a name="ln-185"></a><span class="k">   type</span><span class="p">(</span><span class="n">FE_FILM</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fe_f</span>
+<a name="ln-186"></a>   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">lx</span>
+<a name="ln-187"></a>
+<a name="ln-188"></a>      <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">e</span><span class="p">,</span> <span class="n">i</span>
+<a name="ln-189"></a>      <span class="kt">logical</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">groove</span>
+<a name="ln-190"></a>
+<a name="ln-191"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span><span class="n">H2_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span>
+<a name="ln-192"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span><span class="n">H1_N</span><span class="p">)</span> <span class="o">=</span> <span class="mf">0._R8</span>
+<a name="ln-193"></a>      <span class="k">do </span><span class="n">e</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ne</span>
+<a name="ln-194"></a>         <span class="n">groove</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a name="ln-195"></a>         <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span>
+<a name="ln-196"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">con</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">i</span><span class="p">))</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">lx</span> <span class="o">/</span> <span class="mf">2._R8</span><span class="p">))</span> <span class="n">groove</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a name="ln-197"></a>         <span class="n">enddo</span>
+<a name="ln-198"></a>         <span class="k">if</span> <span class="p">(</span><span class="n">groove</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-199"></a><span class="k">            </span><span class="n">fe_f</span><span class="p">%</span><span class="n">vc</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">HG_C</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_g</span>
+<a name="ln-200"></a>         <span class="n">endif</span>
+<a name="ln-201"></a>      <span class="n">enddo</span>
+<a name="ln-202"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">-</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H1_N</span><span class="p">)</span>
+<a name="ln-203"></a>
+<a name="ln-204"></a>   <span class="k">return</span>
+<a name="ln-205"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">modify_h_pocket</span>
+<a name="ln-206"></a>
+<a name="ln-207"></a>
+<a name="ln-208"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-209"></a>   <span class="c">!&lt; @note Subroutine to define the slider, in a multiscale problem</span>
+<a name="ln-210"></a>   <span class="c">!  @endnote</span>
+<a name="ln-211"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-212"></a>   <span class="k">subroutine </span><span class="n">modify_h_slider_MS</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-213"></a>   <span class="k">implicit none</span>
+<a name="ln-214"></a><span class="k">   type</span><span class="p">(</span><span class="n">MS_FE_FILM</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">ms_fe_f</span>
+<a name="ln-215"></a>   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>       <span class="kd">::</span> <span class="n">lx</span>
+<a name="ln-216"></a>
+<a name="ln-217"></a>      <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">e</span>
+<a name="ln-218"></a>
+<a name="ln-219"></a>      <span class="k">call </span><span class="n">modify_h_slider</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-220"></a>      <span class="k">do </span><span class="n">e</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ne</span>
+<a name="ln-221"></a>         <span class="k">call </span><span class="n">modify_h_slider</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">%</span><span class="n">bs_fe_f</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-222"></a>      <span class="n">enddo</span>
+<a name="ln-223"></a>
+<a name="ln-224"></a>   <span class="k">return</span>
+<a name="ln-225"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">modify_h_slider_MS</span>
+<a name="ln-226"></a>
+<a name="ln-227"></a>
+<a name="ln-228"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-229"></a>   <span class="c">!&lt; @note Subroutine to define the bearing geometry</span>
+<a name="ln-230"></a>   <span class="c">!  @endnote</span>
+<a name="ln-231"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-232"></a>   <span class="k">subroutine </span><span class="n">modify_h_bearing</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-233"></a>   <span class="k">implicit none</span>
+<a name="ln-234"></a><span class="k">   type</span><span class="p">(</span><span class="n">FE_FILM</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fe_f</span>
+<a name="ln-235"></a>   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">lx</span>
+<a name="ln-236"></a>
+<a name="ln-237"></a>      <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">i</span>
+<a name="ln-238"></a>
+<a name="ln-239"></a>      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">n</span>
+<a name="ln-240"></a>         <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">+</span> <span class="mf">0.5_R8</span> <span class="o">*</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">*</span> <span class="nb">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">PI_R8</span> <span class="o">*</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-241"></a>      <span class="n">enddo</span>
+<a name="ln-242"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">-</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H1_N</span><span class="p">)</span>
+<a name="ln-243"></a>
+<a name="ln-244"></a>   <span class="k">return</span>
+<a name="ln-245"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">modify_h_bearing</span>
+<a name="ln-246"></a>
+<a name="ln-247"></a>
+<a name="ln-248"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-249"></a>   <span class="c">!&lt; @note Subroutine to define the bearing geometry</span>
+<a name="ln-250"></a>   <span class="c">!  @endnote</span>
+<a name="ln-251"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-252"></a>   <span class="k">subroutine </span><span class="n">modify_h_bearing_y</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">ly</span><span class="p">)</span>
+<a name="ln-253"></a>   <span class="k">implicit none</span>
+<a name="ln-254"></a><span class="k">   type</span><span class="p">(</span><span class="n">FE_FILM</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">fe_f</span>
+<a name="ln-255"></a>   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">ly</span>
+<a name="ln-256"></a>
+<a name="ln-257"></a>      <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">i</span>
+<a name="ln-258"></a>
+<a name="ln-259"></a>      <span class="k">do </span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">n</span>
+<a name="ln-260"></a>         <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">+</span> <span class="mf">0.5_R8</span> <span class="o">*</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">*</span> <span class="nb">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">PI_R8</span> <span class="o">*</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="n">ly</span><span class="p">)</span>
+<a name="ln-261"></a>      <span class="n">enddo</span>
+<a name="ln-262"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">-</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H1_N</span><span class="p">)</span>
+<a name="ln-263"></a>
+<a name="ln-264"></a>   <span class="k">return</span>
+<a name="ln-265"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">modify_h_bearing_y</span>
+<a name="ln-266"></a>
+<a name="ln-267"></a>
+<a name="ln-268"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-269"></a>   <span class="c">!&lt; @note Subroutine to apply a roughness table to a surface</span>
+<a name="ln-270"></a>   <span class="c">!  @endnote</span>
+<a name="ln-271"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-272"></a>   <span class="k">subroutine </span><span class="n">apply_roughness</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">tab_s</span><span class="p">)</span>
+<a name="ln-273"></a>   <span class="k">implicit none</span>
+<a name="ln-274"></a><span class="k">   type</span><span class="p">(</span><span class="n">FE_FILM</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>                 <span class="kd">::</span> <span class="n">fe_f</span>
+<a name="ln-275"></a>   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">in</span>   <span class="p">),</span> <span class="k">dimension</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">tab_s</span>
+<a name="ln-276"></a>
+<a name="ln-277"></a>      <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span>
+<a name="ln-278"></a>      <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span>
+<a name="ln-279"></a>
+<a name="ln-280"></a>      <span class="k">do </span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">n</span>
+<a name="ln-281"></a>         <span class="n">xp</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<a name="ln-282"></a>         <span class="n">yp</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<a name="ln-283"></a>         <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">xp</span> <span class="o">/</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">lx</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-284"></a>         <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ny</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">yp</span> <span class="o">/</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ly</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-285"></a>         <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">-</span> <span class="n">tab_s</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<a name="ln-286"></a>      <span class="n">enddo</span>
+<a name="ln-287"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">-</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H1_N</span><span class="p">)</span>
+<a name="ln-288"></a>
+<a name="ln-289"></a>   <span class="k">return</span>
+<a name="ln-290"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">apply_roughness</span>
+<a name="ln-291"></a>
+<a name="ln-292"></a>
+<a name="ln-293"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-294"></a>   <span class="c">!&lt; @note Subroutine to apply a roughness table to a surface for a multiscale problem</span>
+<a name="ln-295"></a>   <span class="c">!  @endnote</span>
+<a name="ln-296"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-297"></a>   <span class="k">subroutine </span><span class="n">apply_roughness_MS</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">,</span> <span class="n">tab_s</span><span class="p">)</span>
+<a name="ln-298"></a>   <span class="k">implicit none</span>
+<a name="ln-299"></a><span class="k">   type</span><span class="p">(</span><span class="n">MS_FE_FILM</span><span class="p">),</span> <span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>                 <span class="kd">::</span> <span class="n">ms_fe_f</span>
+<a name="ln-300"></a>   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span>    <span class="k">intent</span><span class="p">(</span><span class="n">in</span>   <span class="p">),</span> <span class="k">dimension</span><span class="p">(:,:)</span> <span class="kd">::</span> <span class="n">tab_s</span>
+<a name="ln-301"></a>
+<a name="ln-302"></a>      <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">xp</span><span class="p">,</span> <span class="n">yp</span>
+<a name="ln-303"></a>      <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span> <span class="kd">::</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">e</span>
+<a name="ln-304"></a>
+<a name="ln-305"></a>      <span class="k">do </span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">n</span>
+<a name="ln-306"></a>         <span class="n">xp</span> <span class="o">=</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">x</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<a name="ln-307"></a>         <span class="n">yp</span> <span class="o">=</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<a name="ln-308"></a>         <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">xp</span> <span class="o">/</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">lx</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-309"></a>         <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ny</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">yp</span> <span class="o">/</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ly</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<a name="ln-310"></a>         <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">data_f</span><span class="p">%</span><span class="n">h_0</span> <span class="o">-</span> <span class="n">tab_s</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<a name="ln-311"></a>      <span class="n">enddo</span>
+<a name="ln-312"></a>      <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H_N</span><span class="p">)</span> <span class="o">=</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H2_N</span><span class="p">)</span> <span class="o">-</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">vn</span><span class="p">(:,</span> <span class="n">H1_N</span><span class="p">)</span>
+<a name="ln-313"></a>
+<a name="ln-314"></a>      <span class="k">do </span><span class="n">e</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ne</span>
+<a name="ln-315"></a>         <span class="k">call </span><span class="n">apply_roughness</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">%</span><span class="n">bs_fe_f</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">tab_s</span><span class="p">)</span>
+<a name="ln-316"></a>      <span class="n">enddo</span>
+<a name="ln-317"></a>
+<a name="ln-318"></a>   <span class="k">return</span>
+<a name="ln-319"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">apply_roughness_ms</span>
+<a name="ln-320"></a>
+<a name="ln-321"></a>
+<a name="ln-322"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-323"></a>   <span class="c">!&lt; @note Subroutine to run the slider test</span>
+<a name="ln-324"></a>   <span class="c">!  @endnote</span>
+<a name="ln-325"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-326"></a>   <span class="k">subroutine </span><span class="n">test_slider_fe</span>
+<a name="ln-327"></a>   <span class="k">implicit none</span>
+<a name="ln-328"></a><span class="k">      call </span><span class="n">init_fe_prob</span>
+<a name="ln-329"></a>      <span class="k">call </span><span class="n">modify_h_slider</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-330"></a>      <span class="k">call </span><span class="n">solve_fe_prob</span>
+<a name="ln-331"></a>   <span class="k">return</span>
+<a name="ln-332"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">test_slider_fe</span>
+<a name="ln-333"></a>
+<a name="ln-334"></a>
+<a name="ln-335"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-336"></a>   <span class="c">!&lt; @note Subroutine to run the bearing test</span>
+<a name="ln-337"></a>   <span class="c">!  @endnote</span>
+<a name="ln-338"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-339"></a>   <span class="k">subroutine </span><span class="n">test_bearing_x_fe</span>
+<a name="ln-340"></a>   <span class="k">implicit none</span>
+<a name="ln-341"></a><span class="k">      call </span><span class="n">init_fe_prob</span>
+<a name="ln-342"></a>      <span class="k">call </span><span class="n">modify_h_bearing</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-343"></a>      <span class="k">call </span><span class="n">solve_fe_prob</span>
+<a name="ln-344"></a>   <span class="k">return</span>
+<a name="ln-345"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">test_bearing_x_fe</span>
+<a name="ln-346"></a>
+<a name="ln-347"></a>
+<a name="ln-348"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-349"></a>   <span class="c">!&lt; @note Subroutine to run the bearing test</span>
+<a name="ln-350"></a>   <span class="c">!  @endnote</span>
+<a name="ln-351"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-352"></a>   <span class="k">subroutine </span><span class="n">test_bearing_y_fe</span>
+<a name="ln-353"></a>   <span class="k">implicit none</span>
+<a name="ln-354"></a><span class="k">      call </span><span class="n">init_fe_prob</span>
+<a name="ln-355"></a>      <span class="k">call </span><span class="n">modify_h_bearing_y</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">ly</span><span class="p">)</span>
+<a name="ln-356"></a>      <span class="k">call </span><span class="n">solve_fe_prob</span>
+<a name="ln-357"></a>   <span class="k">return</span>
+<a name="ln-358"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">test_bearing_y_fe</span>
+<a name="ln-359"></a>
+<a name="ln-360"></a>
+<a name="ln-361"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-362"></a>   <span class="c">!&lt; @note Subroutine to run the deterministic rough surface test</span>
+<a name="ln-363"></a>   <span class="c">!  @endnote</span>
+<a name="ln-364"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-365"></a>   <span class="k">subroutine </span><span class="n">test_rough_fe</span>
+<a name="ln-366"></a>   <span class="k">implicit none</span>
+<a name="ln-367"></a><span class="k">      call </span><span class="n">init_rough_prob</span>
+<a name="ln-368"></a>      <span class="k">call </span><span class="n">init_fe_prob</span>
+<a name="ln-369"></a>      <span class="k">call </span><span class="n">apply_roughness</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">tab_s</span><span class="p">)</span>
+<a name="ln-370"></a>      <span class="k">call </span><span class="n">solve_fe_prob</span>
+<a name="ln-371"></a>   <span class="k">return</span>
+<a name="ln-372"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">test_rough_fe</span>
+<a name="ln-373"></a>
+<a name="ln-374"></a>
+<a name="ln-375"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-376"></a>   <span class="c">!&lt; @note Subroutine to run the pocket test</span>
+<a name="ln-377"></a>   <span class="c">!  @endnote</span>
+<a name="ln-378"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-379"></a>   <span class="k">subroutine </span><span class="n">test_pocket_fe</span>
+<a name="ln-380"></a>   <span class="k">implicit none</span>
+<a name="ln-381"></a><span class="k">      call </span><span class="n">init_fe_prob</span>
+<a name="ln-382"></a>      <span class="k">call </span><span class="n">modify_h_pocket</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-383"></a>      <span class="k">call </span><span class="n">solve_fe_prob</span>
+<a name="ln-384"></a>   <span class="k">return</span>
+<a name="ln-385"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">test_pocket_fe</span>
+<a name="ln-386"></a>
+<a name="ln-387"></a>
+<a name="ln-388"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-389"></a>   <span class="c">!&lt; @note Subroutine to run the multiscale slider test</span>
+<a name="ln-390"></a>   <span class="c">!  @endnote</span>
+<a name="ln-391"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-392"></a>   <span class="k">subroutine </span><span class="n">test_slider_ms</span>
+<a name="ln-393"></a>   <span class="k">implicit none</span>
+<a name="ln-394"></a><span class="k">      call </span><span class="n">init_ms_prob</span>
+<a name="ln-395"></a>      <span class="k">call </span><span class="n">modify_h_slider_MS</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">,</span> <span class="n">lx</span><span class="p">)</span>
+<a name="ln-396"></a>      <span class="k">call </span><span class="n">solve_ms_prob</span>
+<a name="ln-397"></a>   <span class="k">return</span>
+<a name="ln-398"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">test_slider_ms</span>
+<a name="ln-399"></a>
+<a name="ln-400"></a>
+<a name="ln-401"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-402"></a>   <span class="c">!&lt; @note Subroutine to run the rough surface multiscale problem</span>
+<a name="ln-403"></a>   <span class="c">!  @endnote</span>
+<a name="ln-404"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-405"></a>   <span class="k">subroutine </span><span class="n">test_rough_ms</span>
+<a name="ln-406"></a>   <span class="k">implicit none</span>
+<a name="ln-407"></a><span class="k">      call </span><span class="n">init_rough_prob</span>
+<a name="ln-408"></a>      <span class="k">call </span><span class="n">init_ms_prob</span>
+<a name="ln-409"></a>      <span class="k">call </span><span class="n">apply_roughness_MS</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">,</span> <span class="n">tab_s</span><span class="p">)</span>
+<a name="ln-410"></a>      <span class="k">call </span><span class="n">solve_ms_prob</span>
+<a name="ln-411"></a>   <span class="k">return</span>
+<a name="ln-412"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">test_rough_ms</span>
+<a name="ln-413"></a>
+<a name="ln-414"></a>
+<a name="ln-415"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-416"></a>   <span class="c">!&lt; @note Subroutine to initialize a deterministic &#39;smooth&#39; problem</span>
+<a name="ln-417"></a>   <span class="c">!  @endnote</span>
+<a name="ln-418"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-419"></a>   <span class="k">subroutine </span><span class="n">init_fe_prob</span>
+<a name="ln-420"></a>   <span class="k">implicit none</span>
+<a name="ln-421"></a><span class="k">      if</span> <span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">then</span>
+<a name="ln-422"></a><span class="k">         write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;It is better to use an odd number of nodes in the x dir to have profile for comparison with analytical sol.&#39;</span>
+<a name="ln-423"></a>      <span class="n">endif</span>
+<a name="ln-424"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">nx</span> <span class="o">=</span> <span class="n">nx</span>
+<a name="ln-425"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ny</span> <span class="o">=</span> <span class="n">ny</span>
+<a name="ln-426"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">lx</span> <span class="o">=</span> <span class="n">lx</span>
+<a name="ln-427"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ly</span> <span class="o">=</span> <span class="n">ly</span>
+<a name="ln-428"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">zx</span> <span class="o">=</span> <span class="mf">0.</span>
+<a name="ln-429"></a>      <span class="n">fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">zy</span> <span class="o">=</span> <span class="mf">0.</span>
+<a name="ln-430"></a>      <span class="k">call </span><span class="n">create_rect_FE_film</span><span class="p">(</span> <span class="n">data_f</span> <span class="o">=</span> <span class="n">data_f</span><span class="p">,</span>   <span class="p">&amp;</span>
+<a name="ln-431"></a>                                 <span class="n">num_p</span> <span class="o">=</span> <span class="n">num_pts</span><span class="p">,</span>  <span class="p">&amp;</span>
+<a name="ln-432"></a>                                  <span class="n">fe_f</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">)</span>
+<a name="ln-433"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;film created&#39;</span>
+<a name="ln-434"></a>
+<a name="ln-435"></a>   <span class="k">return</span>
+<a name="ln-436"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">init_fe_prob</span>
+<a name="ln-437"></a>
+<a name="ln-438"></a>
+<a name="ln-439"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-440"></a>   <span class="c">!&lt; @note Subroutine to initialize a deterministic &#39;rough&#39; problem</span>
+<a name="ln-441"></a>   <span class="c">!  @endnote</span>
+<a name="ln-442"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-443"></a>   <span class="k">subroutine </span><span class="n">init_rough_prob</span>
+<a name="ln-444"></a>   <span class="k">implicit none</span>
+<a name="ln-445"></a><span class="k">      allocate</span><span class="p">(</span><span class="n">tab_s</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+<a name="ln-446"></a>      <span class="n">tab_s</span> <span class="o">=</span> <span class="mf">0._R8</span>
+<a name="ln-447"></a>      <span class="k">call </span><span class="n">read_surf</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">surface_file</span><span class="p">),</span> <span class="n">sq</span><span class="p">,</span> <span class="n">tab_s</span><span class="p">,</span> <span class="n">scal_tmp</span><span class="p">)</span>
+<a name="ln-448"></a>   <span class="k">return</span>
+<a name="ln-449"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">init_rough_prob</span>
+<a name="ln-450"></a>
+<a name="ln-451"></a>
+<a name="ln-452"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-453"></a>   <span class="c">!&lt; @note Subroutine to initialize a multiscale &#39;smooth&#39; problem</span>
+<a name="ln-454"></a>   <span class="c">!  @endnote</span>
+<a name="ln-455"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-456"></a>   <span class="k">subroutine </span><span class="n">init_ms_prob</span>
+<a name="ln-457"></a>   <span class="k">implicit none</span>
+<a name="ln-458"></a><span class="k">      </span><span class="n">n_mic</span> <span class="o">=</span> <span class="p">(</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_mac</span> <span class="o">+</span><span class="mi">1</span>
+<a name="ln-459"></a>      <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">nx</span> <span class="o">=</span> <span class="n">n_mac</span> <span class="o">+</span><span class="mi">1</span>
+<a name="ln-460"></a>      <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ny</span> <span class="o">=</span> <span class="n">n_mac</span> <span class="o">+</span><span class="mi">1</span>
+<a name="ln-461"></a>      <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">lx</span> <span class="o">=</span> <span class="n">lx</span>
+<a name="ln-462"></a>      <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">ly</span> <span class="o">=</span> <span class="n">ly</span>
+<a name="ln-463"></a>      <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">zx</span> <span class="o">=</span> <span class="mf">0.</span>
+<a name="ln-464"></a>      <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">%</span><span class="n">m</span><span class="p">%</span><span class="n">zy</span> <span class="o">=</span> <span class="mf">0.</span>
+<a name="ln-465"></a>
+<a name="ln-466"></a>      <span class="k">call </span><span class="n">multi_scale_create_rect_fe_film</span><span class="p">(</span><span class="n">data_f</span> <span class="o">=</span> <span class="n">data_f</span><span class="p">,</span>    <span class="p">&amp;</span>
+<a name="ln-467"></a>                                            <span class="n">bs_nx</span> <span class="o">=</span> <span class="n">n_mic</span><span class="p">,</span>     <span class="p">&amp;</span>
+<a name="ln-468"></a>                                            <span class="n">bs_ny</span> <span class="o">=</span> <span class="n">n_mic</span><span class="p">,</span>     <span class="p">&amp;</span>
+<a name="ln-469"></a>                                          <span class="n">num_pts</span> <span class="o">=</span> <span class="n">num_pts</span><span class="p">,</span>   <span class="p">&amp;</span>
+<a name="ln-470"></a>                                          <span class="n">num_pbs</span> <span class="o">=</span> <span class="n">num_pbs</span><span class="p">,</span>   <span class="p">&amp;</span>
+<a name="ln-471"></a>                                          <span class="n">ms_fe_f</span> <span class="o">=</span> <span class="n">ms_fe_f</span><span class="p">)</span>
+<a name="ln-472"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;film created&#39;</span>
+<a name="ln-473"></a>   <span class="k">return</span>
+<a name="ln-474"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">init_ms_prob</span>
+<a name="ln-475"></a>
+<a name="ln-476"></a>
+<a name="ln-477"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-478"></a>   <span class="c">!&lt; @note Subroutine to solve a deterministic &#39;smooth&#39; problem</span>
+<a name="ln-479"></a>   <span class="c">!  @endnote</span>
+<a name="ln-480"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-481"></a>   <span class="k">subroutine </span><span class="n">solve_fe_prob</span>
+<a name="ln-482"></a>   <span class="k">implicit none</span>
+<a name="ln-483"></a>
+<a name="ln-484"></a><span class="k">      call </span><span class="nb">system_clock</span><span class="p">(</span><span class="nb">count</span><span class="o">=</span><span class="n">cinit</span><span class="p">)</span>
+<a name="ln-485"></a>      <span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<a name="ln-486"></a>         <span class="k">call </span><span class="n">solve_FE_film</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+<a name="ln-487"></a>         <span class="k">call </span><span class="n">compute_corner_fluxes</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">bf</span><span class="p">)</span>
+<a name="ln-488"></a>      <span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<a name="ln-489"></a>      <span class="k">call </span><span class="nb">system_clock</span><span class="p">(</span><span class="nb">count</span><span class="o">=</span><span class="n">cend</span><span class="p">,</span><span class="n">count_rate</span><span class="o">=</span><span class="n">cr</span><span class="p">)</span>
+<a name="ln-490"></a>
+<a name="ln-491"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;FE cpu time (s):&#39;</span><span class="p">,</span>          <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span>
+<a name="ln-492"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;FE_cpu_time_(s):&#39;</span><span class="p">,</span>          <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span>
+<a name="ln-493"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;FE real comp time (s):&#39;</span><span class="p">,</span>    <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="kt">real</span><span class="p">(</span><span class="n">cend</span> <span class="o">-</span> <span class="n">cinit</span><span class="p">)</span> <span class="o">/</span> <span class="kt">real</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+<a name="ln-494"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;FE_real_comp_time_(s):&#39;</span><span class="p">,</span>    <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="kt">real</span><span class="p">(</span><span class="n">cend</span> <span class="o">-</span> <span class="n">cinit</span><span class="p">)</span> <span class="o">/</span> <span class="kt">real</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+<a name="ln-495"></a>
+<a name="ln-496"></a>      <span class="n">save_PeK</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a name="ln-497"></a>      <span class="n">save_PeE</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a name="ln-498"></a>
+<a name="ln-499"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">s_vtk</span> <span class="o">/=</span> <span class="n">NO_VTK</span><span class="p">)</span> <span class="k">call </span><span class="n">save_fe_f_vtk</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="n">ms_vtk</span><span class="p">))</span>
+<a name="ln-500"></a>
+<a name="ln-501"></a>      <span class="k">select case</span><span class="p">(</span><span class="n">test_num</span><span class="p">)</span>
+<a name="ln-502"></a>         <span class="k">case</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a name="ln-503"></a>            <span class="k">call </span><span class="n">save_profile_x_comp_slider</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">),</span> <span class="n">lx</span><span class="p">,</span> <span class="n">ly</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<a name="ln-504"></a>            <span class="k">call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="s2">&quot;python3 bin/pyt/filetoplot.py &quot;</span><span class="o">//</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">)</span> <span class="o">//</span><span class="s2">&quot; &#39;$x/L$&#39; &#39;$ph^2/6 \mu V L$&#39; &quot;</span><span class="p">)</span>
+<a name="ln-505"></a>
+<a name="ln-506"></a>         <span class="k">case</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<a name="ln-507"></a>            <span class="k">call </span><span class="n">save_profile_y_comp_air_pocket</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">),</span> <span class="n">ly</span><span class="p">,</span> <span class="n">lx</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+<a name="ln-508"></a>            <span class="k">call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="s2">&quot;python3 bin/pyt/filetoplot.py &quot;</span><span class="o">//</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">)</span> <span class="o">//</span><span class="s2">&quot; &#39;$x/L$&#39; &#39;$ph^2/6 \mu V L$&#39; &quot;</span><span class="p">)</span>
+<a name="ln-509"></a>
+<a name="ln-510"></a>            <span class="k">call </span><span class="n">save_profile_x_comp_air_pocket</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">lx</span><span class="p">,</span> <span class="n">ly</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+<a name="ln-511"></a>            <span class="k">call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="s2">&quot;python3 bin/pyt/filetoplot.py &quot;</span><span class="o">//</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;2&#39;</span> <span class="o">//</span><span class="s2">&quot; &#39;$x/L$&#39; &#39;$ph^2/6 \mu V L$&#39; &quot;</span><span class="p">)</span>
+<a name="ln-512"></a>
+<a name="ln-513"></a>         <span class="k">case </span><span class="n">default</span>
+<a name="ln-514"></a>            <span class="k">call </span><span class="n">save_profile_x_fe</span><span class="p">(</span><span class="n">fe_f</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">),</span> <span class="n">lx</span><span class="p">,</span> <span class="n">ly</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<a name="ln-515"></a>
+<a name="ln-516"></a>      <span class="n">endselect</span>
+<a name="ln-517"></a>
+<a name="ln-518"></a>      <span class="k">call </span><span class="n">save_fe_field</span><span class="p">(</span><span class="n">fe_f</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">,</span>                                   <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-519"></a>                    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="s2">&quot;pressure.sur&quot;</span><span class="p">,</span>   <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-520"></a>                         <span class="n">code</span> <span class="o">=</span> <span class="n">P_N</span><span class="p">,</span>                                    <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-521"></a>                        <span class="n">nodal</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+<a name="ln-522"></a>
+<a name="ln-523"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">save_PeK</span><span class="p">)</span> <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-524"></a>      <span class="k">call </span><span class="n">save_fe_field</span><span class="p">(</span><span class="n">fe_f</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">,</span>                                   <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-525"></a>                    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="s2">&quot;PeK.sur&quot;</span><span class="p">,</span>        <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-526"></a>                         <span class="n">code</span> <span class="o">=</span> <span class="n">PEK_C</span><span class="p">,</span>                                  <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-527"></a>                        <span class="n">nodal</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.)</span>
+<a name="ln-528"></a>
+<a name="ln-529"></a>      <span class="k">if</span> <span class="p">(</span><span class="n">save_PeE</span><span class="p">)</span> <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-530"></a>      <span class="k">call </span><span class="n">save_fe_field</span><span class="p">(</span><span class="n">fe_f</span> <span class="o">=</span> <span class="n">fe_f</span><span class="p">,</span>                                   <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-531"></a>                    <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="s2">&quot;PeE.sur&quot;</span><span class="p">,</span>        <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-532"></a>                         <span class="n">code</span> <span class="o">=</span> <span class="n">PEE_C</span><span class="p">,</span>                                  <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-533"></a>                        <span class="n">nodal</span> <span class="o">=</span> <span class="p">.</span><span class="n">false</span><span class="p">.)</span>
+<a name="ln-534"></a>
+<a name="ln-535"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;load FE (N):&#39;</span><span class="p">,</span>  <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">fz</span><span class="p">()</span>
+<a name="ln-536"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;load_FE_(N):&#39;</span><span class="p">,</span>  <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">fz</span><span class="p">()</span>
+<a name="ln-537"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;fric/x FE (N)&#39;</span><span class="p">,</span> <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">fx</span><span class="p">()</span>
+<a name="ln-538"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;fric/x_FE_(N)&#39;</span><span class="p">,</span> <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">fx</span><span class="p">()</span>
+<a name="ln-539"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;fric/y FE (N)&#39;</span><span class="p">,</span> <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">fy</span><span class="p">()</span>
+<a name="ln-540"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;fric/y_FE_(N)&#39;</span><span class="p">,</span> <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">fe_f</span><span class="p">%</span><span class="n">fy</span><span class="p">()</span>
+<a name="ln-541"></a>   <span class="k">return</span>
+<a name="ln-542"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">solve_fe_prob</span>
+<a name="ln-543"></a>
+<a name="ln-544"></a>
+<a name="ln-545"></a>   <span class="c">!=========================================================================================</span>
+<a name="ln-546"></a>   <span class="c">!&lt; @note Subroutine to solve a &#39;smooth&#39; multiscale problem</span>
+<a name="ln-547"></a>   <span class="c">!  @endnote</span>
+<a name="ln-548"></a>   <span class="c">!-----------------------------------------------------------------------------------------</span>
+<a name="ln-549"></a>   <span class="k">subroutine </span><span class="n">solve_ms_prob</span>
+<a name="ln-550"></a>   <span class="k">implicit none</span>
+<a name="ln-551"></a><span class="k">      call </span><span class="nb">system_clock</span><span class="p">(</span><span class="nb">count</span><span class="o">=</span><span class="n">cinit</span><span class="p">)</span>
+<a name="ln-552"></a>      <span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<a name="ln-553"></a>         <span class="k">call </span><span class="n">multi_scale_solve_fe_film</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">,</span> <span class="n">ms_mat</span><span class="p">,</span> <span class="n">bc</span><span class="p">)</span>
+<a name="ln-554"></a>      <span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<a name="ln-555"></a>      <span class="k">call </span><span class="nb">system_clock</span><span class="p">(</span><span class="nb">count</span><span class="o">=</span><span class="n">cend</span><span class="p">,</span><span class="n">count_rate</span><span class="o">=</span><span class="n">cr</span><span class="p">)</span>
+<a name="ln-556"></a>
+<a name="ln-557"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;MS cpu time (s):&#39;</span><span class="p">,</span>          <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span>
+<a name="ln-558"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;MS_cpu_time_(s):&#39;</span><span class="p">,</span>          <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">t1</span>
+<a name="ln-559"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;MS real comp time (s):&#39;</span><span class="p">,</span>    <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="kt">real</span><span class="p">(</span><span class="n">cend</span> <span class="o">-</span> <span class="n">cinit</span><span class="p">)</span> <span class="o">/</span> <span class="kt">real</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+<a name="ln-560"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;MS_real_comp_time_(s):&#39;</span><span class="p">,</span>    <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="kt">real</span><span class="p">(</span><span class="n">cend</span> <span class="o">-</span> <span class="n">cinit</span><span class="p">)</span> <span class="o">/</span> <span class="kt">real</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+<a name="ln-561"></a>
+<a name="ln-562"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;load MS_FE (N):&#39;</span><span class="p">,</span>           <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ms_fz</span><span class="p">()</span>
+<a name="ln-563"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;load_MS_FE_(N):&#39;</span><span class="p">,</span>           <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ms_fz</span><span class="p">()</span>
+<a name="ln-564"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;fric/x MS FE (N):&#39;</span><span class="p">,</span>         <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ms_fx</span><span class="p">()</span>
+<a name="ln-565"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;fric/x_MS_FE_(N):&#39;</span><span class="p">,</span>         <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ms_fx</span><span class="p">()</span>
+<a name="ln-566"></a>      <span class="k">write</span><span class="p">(</span><span class="n">OPU</span><span class="p">,</span><span class="o">*</span><span class="p">)</span>          <span class="s1">&#39;fric/y MS FE (N):&#39;</span><span class="p">,</span>         <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ms_fy</span><span class="p">()</span>
+<a name="ln-567"></a>      <span class="k">write</span><span class="p">(</span><span class="n">unit_num_res</span><span class="p">,</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;fric/y_MS_FE_(N):&#39;</span><span class="p">,</span>         <span class="nb">char</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ms_fy</span><span class="p">()</span>
+<a name="ln-568"></a>
+<a name="ln-569"></a>      <span class="k">call </span><span class="n">save_ms_fe_f_vtk</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="n">ms_vtk</span><span class="p">))</span>
+<a name="ln-570"></a>
+<a name="ln-571"></a>      <span class="k">call </span><span class="n">save_profile_x_fe</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">%</span><span class="n">ts_fe_f</span><span class="p">,</span> <span class="nb">trim</span><span class="p">(</span><span class="n">prof_ts</span><span class="p">),</span> <span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-572"></a>      <span class="k">call </span><span class="n">save_profile_x_ms</span><span class="p">(</span><span class="n">ms_fe_f</span><span class="p">,</span>         <span class="nb">trim</span><span class="p">(</span><span class="n">prof_bs</span><span class="p">),</span> <span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<a name="ln-573"></a>
+<a name="ln-574"></a>      <span class="k">call </span><span class="n">save_ms_field</span><span class="p">(</span><span class="n">ms_fe_f</span> <span class="o">=</span> <span class="n">ms_fe_f</span><span class="p">,</span>                                   <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-575"></a>                       <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;out/&quot;</span><span class="o">//</span><span class="n">res_dir</span><span class="o">//</span><span class="s2">&quot;/&quot;</span><span class="o">//</span><span class="s2">&quot;ms_pressure.sur&quot;</span><span class="p">,</span>   <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-576"></a>                            <span class="n">code</span> <span class="o">=</span> <span class="n">P_N</span><span class="p">,</span>                                       <span class="p">&amp;</span> <span class="c">!</span>
+<a name="ln-577"></a>                           <span class="n">nodal</span> <span class="o">=</span> <span class="p">.</span><span class="n">true</span><span class="p">.</span>                                     <span class="p">)</span>
+<a name="ln-578"></a>   <span class="k">return</span>
+<a name="ln-579"></a><span class="k">   </span><span class="n">endsubroutine</span> <span class="n">solve_ms_prob</span>
+<a name="ln-580"></a>
+<a name="ln-581"></a><span class="n">endmodule</span> <span class="n">test_musst</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2019-04-03 16:35  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MUSST was developed by Noël Brunetière - Arthur Francisco</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

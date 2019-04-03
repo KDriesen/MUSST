@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="MUSST – A modern Fortran MUltiScale Simulation Tribology solver">
+    
+    <meta name="author" content="Noël Brunetière - Arthur Francisco" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>FE_FILM &ndash; MUSST </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+    <link href="../css/user.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">MUSST </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/main.html">Program</a></li>
+      
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/main.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>FE_FILM
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 3.0% of total for derived types.</p>Including implementation: 50 statements,  7.3% of total for derived types.">17 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/mod_film.f90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/mod_film.f90.html'>mod_film.f90</a></li>
+    
+     <li><a href='../module/film.html'>film</a></li>
+    
+  
+     <li class="active">FE_FILM</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-n_vn">n_vn</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-n_vc">n_vc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-m">m</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-data_f">data_f</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-prc">prc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-num_p">num_p</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vn">vn</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vc">vc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-bc">bc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vn_name">vn_name</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vc_name">vc_name</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/fe_film.html#boundprocedure-fx">fx</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#boundprocedure-fy">fy</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#boundprocedure-fz">fz</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/fe_film.html#src">FE_FILM</a>
+  </div>
+</div>
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: FE_FILM</h2>
+    <p><span style="color:green">
+   <em>FE_FILM</em> stores the whole stuff related to a film: the nodal variables, the mesh, etc.
+ </span></p>
+    <br>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Inherits</h3>
+      </div>
+      <div class="panel-body">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: type~~fe_film~~InheritsGraph Pages: 1 -->
+<svg id="typefe_filmInheritsGraph" width="201pt" height="158pt"
+ viewBox="0.00 0.00 201.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~fe_film~~InheritsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>type~~fe_film~~InheritsGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-154 197,-154 197,4 -4,4"/>
+<!-- type~fe_film -->
+<g id="type~~fe_film~~InheritsGraph_node1" class="node">
+<title>type~fe_film</title>
+<polygon fill="none" stroke="#000000" points="193,-87 138,-87 138,-63 193,-63 193,-87"/>
+<text text-anchor="middle" x="165.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">FE_FILM</text>
+</g>
+<!-- FE_MESH -->
+<g id="type~~fe_film~~InheritsGraph_node2" class="node">
+<title>FE_MESH</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="65.5,-150 4.5,-150 4.5,-126 65.5,-126 65.5,-150"/>
+<text text-anchor="middle" x="35" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">FE_MESH</text>
+</g>
+<!-- type~fe_film&#45;&gt;FE_MESH -->
+<g id="type~~fe_film~~InheritsGraph_edge1" class="edge">
+<title>type~fe_film&#45;&gt;FE_MESH</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M145.3718,-87.1273C137.5531,-91.672 128.4579,-96.7583 120,-101 105.2481,-108.3982 88.6768,-115.8058 74.1103,-122.0285"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="72.7158,-118.8181 64.8668,-125.9345 75.4405,-125.266 72.7158,-118.8181"/>
+<text text-anchor="middle" x="104" y="-117.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">m</text>
+</g>
+<!-- DATA_FILM -->
+<g id="type~~fe_film~~InheritsGraph_node3" class="node">
+<title>DATA_FILM</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="70,-108 0,-108 0,-84 70,-84 70,-108"/>
+<text text-anchor="middle" x="35" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">DATA_FILM</text>
+</g>
+<!-- type~fe_film&#45;&gt;DATA_FILM -->
+<g id="type~~fe_film~~InheritsGraph_edge3" class="edge">
+<title>type~fe_film&#45;&gt;DATA_FILM</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M137.8243,-79.4536C121.0813,-82.1478 99.3313,-85.6478 80.1497,-88.7345"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="79.4172,-85.3073 70.1003,-90.3517 80.5294,-92.2184 79.4172,-85.3073"/>
+<text text-anchor="middle" x="104" y="-89.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">data_f</text>
+</g>
+<!-- NUM_PAR -->
+<g id="type~~fe_film~~InheritsGraph_node4" class="node">
+<title>NUM_PAR</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="67,-66 3,-66 3,-42 67,-42 67,-66"/>
+<text text-anchor="middle" x="35" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">NUM_PAR</text>
+</g>
+<!-- type~fe_film&#45;&gt;NUM_PAR -->
+<g id="type~~fe_film~~InheritsGraph_edge2" class="edge">
+<title>type~fe_film&#45;&gt;NUM_PAR</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M137.6994,-67.7191C131.8788,-66.3525 125.7598,-65.0312 120,-64 106.1303,-61.5168 90.8728,-59.5012 77.1588,-57.9474"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="77.3398,-54.4466 67.021,-56.8492 76.5858,-61.4059 77.3398,-54.4466"/>
+<text text-anchor="middle" x="104" y="-66.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">num_p</text>
+</g>
+<!-- type~prc_tab -->
+<g id="type~~fe_film~~InheritsGraph_node5" class="node">
+<title>type~prc_tab</title>
+<g id="a_type~~fe_film~~InheritsGraph_node5"><a xlink:href=".././type/prc_tab.html" xlink:title="PRC_TAB">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="65.5,-24 4.5,-24 4.5,0 65.5,0 65.5,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">PRC_TAB</text>
+</a>
+</g>
+</g>
+<!-- type~fe_film&#45;&gt;type~prc_tab -->
+<g id="type~~fe_film~~InheritsGraph_edge4" class="edge">
+<title>type~fe_film&#45;&gt;type~prc_tab</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M148.7379,-62.7111C140.3627,-56.8963 129.9206,-50.1222 120,-45 105.8287,-37.6831 89.6465,-31.0141 75.2311,-25.6165"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="76.1738,-22.2346 65.58,-22.0904 73.7716,-28.8096 76.1738,-22.2346"/>
+<text text-anchor="middle" x="104" y="-47.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">prc</text>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="178pt" height="32pt"
+ viewBox="0.00 0.00 177.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 173.5,-28 173.5,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="169.5,-24 72.5,-24 72.5,0 169.5,0 169.5,-24"/>
+<text text-anchor="middle" x="121" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a derived type to the parent type which it
+    extends. Dashed arrows point from a derived type to the other
+    types it contains as a components, with a label listing the name(s) of
+    said component(s). Where possible, edges connecting nodes are given different colours to make them easier to distinguish in large graphs.
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-n_vn">n_vn</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-n_vc">n_vc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-m">m</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-data_f">data_f</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-prc">prc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-num_p">num_p</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vn">vn</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vc">vc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-bc">bc</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vn_name">vn_name</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#variable-vc_name">vc_name</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/fe_film.html#boundprocedure-fx">fx</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#boundprocedure-fy">fy</a>
+      
+      <a class="list-group-item" href="../type/fe_film.html#boundprocedure-fz">fz</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/fe_film.html#src">FE_FILM</a>
+  </div>
+</div>
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-n_vn"></span>integer(kind=I4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>n_vn</strong></td><td></td><td></td><td><p><em>number of nodal variables</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-n_vc"></span>integer(kind=I4),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>n_vc</strong></td><td></td><td></td><td><p><em>number of variables on cells</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-m"></span>type(FE_MESH),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>m</strong></td><td></td><td></td><td><p><em>mesh of the film</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-data_f"></span>type(DATA_FILM),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>data_f</strong></td><td></td><td></td><td><p><em>data of the problem</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-prc"></span>type(<a href='../type/prc_tab.html'>PRC_TAB</a>),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>prc</strong></td><td></td><td></td><td><p><em>precomputation</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-num_p"></span>type(NUM_PAR),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>num_p</strong></td><td></td><td></td><td><p><em>numerical param for iterative solution</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-vn"></span>real(kind=R8),</td>
+  
+  <td>public,</td>
+  <td>dimension(:,:), allocatable</td><td>::</td>
+  <td><strong>vn</strong></td><td></td><td></td><td><p><em>nodal variables table</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-vc"></span>real(kind=R8),</td>
+  
+  <td>public,</td>
+  <td>dimension(:,:), allocatable</td><td>::</td>
+  <td><strong>vc</strong></td><td></td><td></td><td><p><em>cell variables table</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-bc"></span>integer(kind=I4),</td>
+  
+  <td>public,</td>
+  <td>dimension(:,:), allocatable</td><td>::</td>
+  <td><strong>bc</strong></td><td></td><td></td><td><p><em>boundary nodes code</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-vn_name"></span>character(len=20),</td>
+  
+  <td>public,</td>
+  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>vn_name</strong></td><td></td><td></td><td><p><em>nodal variable names</em></p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-vc_name"></span>character(len=20),</td>
+  
+  <td>public,</td>
+  <td>dimension(:), allocatable</td><td>::</td>
+  <td><strong>vc_name</strong></td><td></td><td></td><td><p><em>cell variable names</em></p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+     
+    <section>
+    <h2>Type-Bound Procedures</h2>
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-fx"></span><h3>procedure, public :: <strong>fx</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p><em>force computation along</em> <script type="math/tex">x</script>
+</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private function <a href='../proc/fx.html'>fx</a>(fe_f)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p></p><a href="../proc/fx.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/fe_film.html'>FE_FILM</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fe_f</strong></td><td><p><em>FE film</em></p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real(kind=R8)
+  </small></h4>
+  
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-fy"></span><h3>procedure, public :: <strong>fy</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p><em>force computation along</em> <script type="math/tex">y</script>
+</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private function <a href='../proc/fy.html'>fy</a>(fe_f)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p></p><a href="../proc/fy.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/fe_film.html'>FE_FILM</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fe_f</strong></td><td><p><em>FE film</em></p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real(kind=R8)
+  </small></h4>
+  
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-fz"></span><h3>procedure, public :: <strong>fz</strong>  
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p><em>force computation along</em> <script type="math/tex">z</script>
+</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private function <a href='../proc/fz.html'>fz</a>(fe_f)
+    
+    
+   
+</h3>
+    
+
+
+
+
+
+
+
+<p></p><a href="../proc/fz.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/fe_film.html'>FE_FILM</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>fe_f</strong></td><td><p><em>fluid type</em></p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>real(kind=R8)
+  </small></h4>
+  
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+    </section>
+    
+    
+    
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="k">type </span><span class="n">FE_FILM</span>
+<span class="c">!! &lt;span style=&quot;color:green&quot;&gt;</span>
+<span class="c">!!   *FE_FILM* stores the whole stuff related to a film: the nodal variables, the mesh, etc.</span>
+<span class="c">!! &lt;/span&gt;</span>
+   <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">n_vn</span>          <span class="c">!! *number of nodal variables*</span>
+   <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">n_vc</span>          <span class="c">!! *number of variables on cells*</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">FE_MESH</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">m</span>             <span class="c">!! *mesh of the film*</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">DATA_FILM</span><span class="p">)</span>   <span class="kd">::</span> <span class="n">data_f</span>        <span class="c">!! *data of the problem*</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">PRC_TAB</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">prc</span>           <span class="c">!! *precomputation*</span>
+   <span class="k">type</span><span class="p">(</span><span class="n">NUM_PAR</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">num_p</span>         <span class="c">!! *numerical param for iterative solution*</span>
+
+   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span>     <span class="k">dimension</span><span class="p">(:,:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">vn</span>      <span class="c">!! *nodal variables table*</span>
+   <span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">R8</span><span class="p">),</span>     <span class="k">dimension</span><span class="p">(:,:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">vc</span>      <span class="c">!! *cell variables table*</span>
+   <span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">I4</span><span class="p">),</span>  <span class="k">dimension</span><span class="p">(:,:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">bc</span>      <span class="c">!! *boundary nodes code*</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span>   <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">vn_name</span> <span class="c">!! *nodal variable names*</span>
+   <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(:),</span>   <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">vc_name</span> <span class="c">!! *cell variable names*</span>
+   <span class="k">contains</span>
+<span class="k">      procedure</span> <span class="kd">::</span> <span class="n">fx</span>                                        <span class="c">!! *force computation along* \(x\)</span>
+      <span class="k">procedure</span> <span class="kd">::</span> <span class="n">fy</span>                                        <span class="c">!! *force computation along* \(y\)</span>
+      <span class="k">procedure</span> <span class="kd">::</span> <span class="n">fz</span>                                        <span class="c">!! *force computation along* \(z\)</span>
+<span class="n">endtype</span> <span class="n">FE_FILM</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+             on 2019-04-03 16:35  
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MUSST was developed by Noël Brunetière - Arthur Francisco</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
