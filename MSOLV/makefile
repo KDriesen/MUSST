@@ -1,3 +1,4 @@
+MA48_LIB = 1
 
 utils_dir = ../UTILS
 
@@ -35,7 +36,9 @@ SUPLIB  =
 SUPLIB += $(LIBDIR)/libsuperlu.a
 
 M48LIB  =
-M48LIB += $(LIBDIR)/libhsl_ma48.a
+ifeq ($(MA48_LIB),1)
+   M48LIB += $(LIBDIR)/libhsl_ma48.a
+endif
 
 SMALIB = -Wl,--start-group $(GENLIB) $(M48LIB) $(MUMLIB) $(SUPLIB) $(UMFLIB) $(FFTLIB) -Wl,--end-group
 
@@ -52,16 +55,16 @@ ALL_OBJS = $(addprefix $(OBJDIR)/, *.o) $(addprefix $(utils_dir)/$(OBJDIR)/, *.o
 
 
 CFLAGS  = -I$(MODDIR) -I$(INCDIR) -I$(utils_dir)/$(MODDIR)
-CFLAGS += -cpp -DGFORTRANMOD -ffree-form -ffree-line-length-none -march=native -fimplicit-none -fall-intrinsics -fmax-errors=1 -finit-real=nan -ffpe-summary=none -fopenmp
+CFLAGS += -cpp -DWITH_MA48=$(MA48_LIB) -ffree-form -ffree-line-length-none -march=native -fimplicit-none -fall-intrinsics -fmax-errors=1 -fopenmp
 
 LFLAGS  = $(SMALIB)
 LFLAGS += -lpthread -lm -lgomp
 
 
 ifneq ('$(DEBUG)','')
-	CFLAGS += -Og -g -Wall -Wextra -fbacktrace -pedantic -fbounds-check -Wuninitialized -fimplicit-none
+	CFLAGS += -Og -g -Wall -Wextra -fbacktrace -pedantic -fbounds-check -Wuninitialized -ffpe-summary=invalid,zero,overflow,underflow -ffpe-trap=invalid,zero,overflow,underflow -finit-real=nan
 else
-	CFLAGS += -O3
+	CFLAGS += -O3 -ffpe-summary=none
 endif
 
 ifneq ('$(GPROF)','')

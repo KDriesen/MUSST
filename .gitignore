@@ -9,10 +9,8 @@
 /TCHEV
 
 **/out/*
-**/sur/*
 **/doc/*
 **/mat/*
-**/cfg/*
 
 **/arch
 **/div
@@ -54,4 +52,6 @@ fort.*
 /MUSST/save.sh
 /MUSST/mail_save.sh
 
+# To handle 'empty' folders, an empty .gitignore file is added.
+# !.gitignore excludes the file from the list of excluded files.
 

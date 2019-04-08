@@ -1,0 +1,72 @@
+Some comments about the present file
+------------------------------------
+Lancer le programme : ./prg cfg/my_data.dat
+
+   '  1 - slider bearing      - FE solution'
+   '  2 - journal bearing (x) - FE solution'
+   '  3 - journal bearing (y) - FE solution'
+   '  4 - rough surface       - FE solution'
+   '  5 - pockect bearing                  '
+   ' 11 - slider bearing      - MS solution'
+   ' 14 - rough surface       - MS solution'
+
+====================================================================================================
+BEGIN_FILE     (nothing read before)
+
+VERBOSE
+   20                                             (0, 10, 20, 30: from nothing to all)
+
+SOLV_MESS
+   0                                              (0, 1, 2: from almost nothing to all)
+
+OUTPUT_UNIT
+   0                                              (0=terminal, other=file)
+   "out/TEST_01.out"                              (to be defined if output unit /=0)
+
+SOLVER_BS
+   3                                              (0=MA48, 3=umfpack)
+
+SOLVER_TS
+   2                                              (0=MA48, 1=SuperLU, 2=MUMPS, 3=umfpack)
+
+NB_THREADS_MAX
+   -1                                             (-1=determined by the program)
+
+ARCHIVE
+   1                                              (0=no, 1=yes)
+
+EXEC_MUSST
+   1                                              (problem type)
+   FILM---------------------------------------------------------------------------------------------
+   1e-06 1e-06                                    (h_0 | h_g)
+   10.00 00.00                                    (v_x | v_y)
+   0                                              (pb_type)
+   0                                              (fluid_type: 0=INCcompressible, 1=Perfect Gas, 2=MIXture)
+   1e+05                                          (p_0)
+   1000.0                                         (rho_0)
+   1e-03                                          (mu_0)
+   287.0                                          (rg)
+   1e-05                                          (lambda)
+   273.0                                          (t_0)
+   SURF---------------------------------------------------------------------------------------------
+   "sur/no_file.sur"                              (surface_file)
+   0.010  0.10                                    (lx | ly)
+   0257 0513                                      (nx | ny)
+   032                                            (n_mac)
+   1e+05 1e+05 1e+05 1e+05                        (boundary)
+   MISC---------------------------------------------------------------------------------------------
+   1.00 1e-12 200 0                               (relax ts | eps ts | it_max ts | mess | free_threads)
+   1.00 1e-12 200 0                               (relax bs | eps bs | it_max bs | mess | free_threads)
+   1e-07                                          (sq)
+   1 "TEST_01.vtk"                                (s_vtk | file_vtk)
+   "TEST_01.pts"                                  (prof_ts)
+   "TEST_01.bts"                                  (prof_bs)
+   "TEST_01.res"                                  (res_file)
+
+END_FILE       (nothing read after)
+====================================================================================================
+
+Additional comments
+------------------------
+
+

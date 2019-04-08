@@ -41,7 +41,7 @@ CFLAGS += -cpp -ffree-form -ffree-line-length-none -march=native -fimplicit-none
 ifneq ('$(DEBUG)','')
 	CFLAGS += -Og -g -Wall -Wextra -fbacktrace -pedantic -fbounds-check -Wuninitialized -ffpe-summary=invalid,zero,overflow,underflow -ffpe-trap=invalid,zero,overflow,underflow -finit-real=nan
 else
-	CFLAGS += -O3 -fno-backtrace
+	CFLAGS += -O3 -fno-backtrace -ffpe-summary=none
 endif
 
 ifneq ('$(GPROF)','')
