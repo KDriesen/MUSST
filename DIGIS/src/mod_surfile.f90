@@ -815,9 +815,10 @@ contains
    !    By default, the ```.sur``` header is dumped
    ! @endwarning
    !-----------------------------------------------------------------------------------------
-   subroutine read_surf(nom_fic, sq, tab_s, scal)
+   subroutine read_surf(nom_fic, mu, sq, tab_s, scal)
    implicit none
    character(len=*), intent(in)  :: nom_fic                     !! *file name*
+   real(kind=R8),    intent(in)  :: mu                          !! *if > 0, values are centered*
    real(kind=R8),    intent(in)  :: sq                          !! *desired height standard deviation*
    type(SCALE_SURF), intent(out) :: scal                        !! *object [[SCALE_SURF]]*
    real(kind=R8), dimension(:,:), allocatable, intent(out) :: tab_s  !! *height array*
@@ -926,10 +927,12 @@ contains
       nx = scal%xres
       ny = scal%yres
 
-      ! centering
-      mean    = sum(tab_s(1:nx, 1:ny)) / (nx * ny)
-      scal%mu = mean
-      tab_s(1:nx, 1:ny) = tab_s(1:nx, 1:ny) -mean
+      ! centering ?
+      if (mu > 0.) then
+         mean    = sum(tab_s(1:nx, 1:ny)) / (nx * ny)
+         scal%mu = mean
+         tab_s(1:nx, 1:ny) = tab_s(1:nx, 1:ny) -mean
+      endif
 
       ! scaling ?
       if (sq > 0.) then

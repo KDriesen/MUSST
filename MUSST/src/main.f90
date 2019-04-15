@@ -10,7 +10,7 @@
 
 program main
 use omp_lib
-use test_musst, only : run_test
+use test_musst
 use data_arch,  only : I4, NB_THREADS_MAX, OUT_U=>OPU, get_unit
 use num_param,  only : VERBOSE, OUTPUT_FILE, OPU
 use solver,     only : SOLVER_BS, SOLVER_TS, SOLV_MESS
@@ -23,7 +23,7 @@ character(len= 8) :: date
 character(len=10) :: time
 character(len=15) :: repos
 
-integer(kind=I4) :: ARCHIVE
+integer(kind=I4)  :: archive
 
 ! a result directory is created under "/out" with the date as name
 ! ----------------------------------------------------------------
@@ -49,6 +49,9 @@ call execute_command_line("cp "//trim(job_file)//" out/"//repos, wait=.true.)
 ! the job file is processed
 ! -------------------------
 call read_config
+call run_test
+
+if (OPU/=OUT_U) close(OPU)
 
 stop
 
@@ -56,21 +59,33 @@ contains
 
    subroutine read_config()
    implicit none
-      integer(kind=I4)   :: jf, err_read, test_num
+      integer(kind=I4)   :: jf, err_read
       character(len=032) :: word
       character(len=128) :: job_copy
 
       job_copy = "out/"//repos//job_file(4:len_trim(job_file))
+
+      VERBOSE   = 20
+      SOLV_MESS = 0
+
+      OPU = 0
+      OUTPUT_FILE = "no_file"
+
+      SOLVER_BS = 3
+      SOLVER_TS = 2
+
+      NB_THREADS_MAX = -1
+
+      archive = 0
+
+      test_num = 0
 
       call get_unit(jf) ; open(jf, file = trim(job_file), status = 'old')
          do
             word = repeat(' ', len(word))
             read(jf, *, iostat = err_read) word
 
-            if ( index(word, 'END_FILE'      ) /= 0 ) then
-               if (OPU/=OUT_U) close(OPU)
-               exit
-            endif
+            if ( index(word, 'END_FILE'      ) /= 0 ) exit
 
             if ( index(word, 'VERBOSE'       ) /= 0 ) then
                read(jf, *) VERBOSE
@@ -87,8 +102,8 @@ contains
                else
                   read(jf, *) OUTPUT_FILE
                   call get_unit(OPU)
-                  open(unit = OPU,                          &
-                       file = trim(adjustl(OUTPUT_FILE)),   &
+                  open(unit = OPU,                                               &
+                       file = "out/"//repos//"/"//trim(adjustl(OUTPUT_FILE)),    &
                      status = 'unknown')
                endif
             endif
@@ -103,9 +118,12 @@ contains
                read(jf, *) SOLVER_TS
             endif
 
-            if ( index(word, 'EXEC_MUSST'    ) /= 0 ) then
+            if ( index(word, 'PROBLEM_TYPE'  ) /= 0 ) then
                read(jf, *) test_num
-               call run_test(test_num, jf, repos)
+            endif
+
+            if ( index(word, 'PARAM_MUSST'   ) /= 0 ) then
+               call read_data(jf, repos)
             endif
 
             if ( index(word, 'NB_THREADS_MAX') /= 0 ) then
@@ -116,7 +134,7 @@ contains
             endif
 
             if ( index(word, 'ARCHIVE') /= 0 ) then
-               read(jf, *) ARCHIVE
+               read(jf, *) archive
                if (ARCHIVE==1) then
                   call execute_command_line("sh bin/save/save.sh", wait=.true.)
                   call execute_command_line("mv *.7z out/"//repos//"/")

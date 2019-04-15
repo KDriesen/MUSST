@@ -46,7 +46,9 @@ endtype ms_fe_film
 
 type(SCALE_SURF) :: scal_tmp !! *object [[SCALE_SURF]]*
 
-public :: MS_FE_FILM, multi_scale_create_rect_fe_film, multi_scale_solve_fe_film, save_ms_field
+logical(kind=I4), parameter :: SMOOTH_MS = .true.  !! *at the end of the iterative process, the pressure field can be smoothed*
+
+public :: MS_FE_FILM, multi_scale_create_rect_fe_film, multi_scale_solve_fe_film, save_ms_field, ms_fe_f_2_mat
 
 contains
 
@@ -190,11 +192,11 @@ contains
       do
          if (VERBOSE >= 3) write(OPU,*) "loop MS *******************", it
 
-         if (conv) then !ù
+         if (conv) then
             do e = 1, ms_fe_f%ts_fe_f%m%ne
                call solve_syst(mat = ms_mat%bs_mat(e), & !
                               step = 'end')
-               if (VERBOSE >= 3) write(OPU,*) '   Matrix BS released, thread ', omp_get_thread_num()!ù
+               if (VERBOSE >= 3) write(OPU,*) '   Matrix BS released, thread ', omp_get_thread_num()
             enddo
             exit
          endif
@@ -219,7 +221,7 @@ contains
          if (ms_mat%ts_mat%first) then
             call solve_syst(mat = ms_mat%ts_mat, &
                            step = 'ana')
-            ms_mat%ts_mat%first = .false. !ù
+            ms_mat%ts_mat%first = .false.
             if (VERBOSE >= 3) write(OPU,*) 'Matrix TS analyzed, thread ', omp_get_thread_num()
          endif
 

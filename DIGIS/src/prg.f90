@@ -12,6 +12,7 @@ integer(kind=I4) :: i, j
    call init_scal(scal)
 
    call read_surf(nom_fic = "sur/600x300.dat", & !
+                       mu = -1._R8,            & !
                        sq = -1._R8,            & !
                     tab_s = tab,               & !
                      scal = scal)
@@ -28,6 +29,7 @@ integer(kind=I4) :: i, j
 
    ! --- reads a "sur" file, writes its scaled form in a "sur" file and a xyz file
    call read_surf(nom_fic = "sur/600x300.sur", & !
+                       mu = 1._R8,              & !
                        sq = 1._R8,              & !
                     tab_s = tab,                & !
                      scal = scal)
@@ -62,6 +64,7 @@ integer(kind=I4) :: i, j
                       scal = scal)
 
    call read_surf(nom_fic = "out/cos.sur", & !
+                       mu = -1._R8,        & !
                        sq = -1._R8,        & !
                     tab_s = tab,           & !
                      scal = scal)

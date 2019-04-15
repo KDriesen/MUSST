@@ -1,12 +1,12 @@
 Some comments about the present file
 ------------------------------------
-Lancer le programme : ./prg cfg/my_data.dat
+run the program : ./main cfg/TEST_14.dat
 
-   '  1 - slider bearing      - FE solution'
-   '  2 - journal bearing (x) - FE solution'
-   '  3 - journal bearing (y) - FE solution'
-   '  4 - rough surface       - FE solution'
-   '  5 - pockect bearing                  '
+   ' 01 - slider bearing      - FE solution'
+   ' 02 - journal bearing (x) - FE solution'
+   ' 03 - journal bearing (y) - FE solution'
+   ' 04 - rough surface       - FE solution'
+   ' 05 - pockect bearing                  '
    ' 11 - slider bearing      - MS solution'
    ' 14 - rough surface       - MS solution'
 
@@ -21,7 +21,7 @@ SOLV_MESS
 
 OUTPUT_UNIT
    0                                              (0=terminal, other=file)
-   "out/TEST_14.out"                              (to be defined if output unit /=0)
+   "TEST_14.out"                                  (to be defined if output unit /=0)
 
 SOLVER_BS
    3                                              (0=MA48, 3=umfpack)
@@ -35,33 +35,82 @@ NB_THREADS_MAX
 ARCHIVE
    1                                              (0=no, 1=yes)
 
-EXEC_MUSST
+PROBLEM_TYPE
    14                                             (problem type)
+
+PARAM_MUSST
+
    FILM---------------------------------------------------------------------------------------------
+   
+   [GAP]
    1e-06 0.0                                      (h_0 | h_g)
+
+   [SPEED]
    10.00 00.00                                    (v_x | v_y)
+
+   [ELASTICITY]
    0                                              (pb_type)
+
+   [FLUID_TYPE]
    2                                              (fluid_type: 0=INCcompressible, 1=Perfect Gas, 2=MIXture)
+
+   [AMBIENT_PRESSURE]
    1e+05                                          (p_0)
+
+   [DENSITY]
    1000.0                                         (rho_0)
+
+   [VISCOSITY]
    1e-05                                          (mu_0)
+
+   [GAZ_CONSTANT]
    287.0                                          (rg)
+
+   [MIXTURE_TRANSITION]
    1e-05                                          (lambda)
+
+   [AMBIENT_TEMPERATURE]
    273.0                                          (t_0)
+
    SURF---------------------------------------------------------------------------------------------
+
+   [ROUGH_SURFACE]
    "sur/TEST_14.sur"                              (surface_file)
+
+   [NUMBER_NODES]
+   1025 1025                                      (nx | ny)
+
+   [ROUGH_SURFACE_SOLUTION]
+   1                                              (compare ? 0=no, 1=yes)
+   "sur/TEST_14_SOLUTION.sur"                     (reference pressure field) 
+
+   [LENGTH]
    0.10  0.10                                     (lx | ly)
-   0257 0257                                      (nx | ny)
-   032                                            (n_mac)
+
+   [NUMBER_MACRO_ELEMENTS]
+   128                                            (n_mac)
+
+   [BOUNDARY_PRESSURES]
    1e+05 1e+05 1e+05 1e+05                        (boundary)
+
    MISC---------------------------------------------------------------------------------------------
+
+   [NUMERICAL_TS_PARAMETERS]
    1.00 1e-08 200 0                               (relax ts | eps ts | it_max ts | mess | free_threads)
+
+   [NUMERICAL_BS_PARAMETERS]
    1.00 1e-07 200 0                               (relax bs | eps bs | it_max bs | mess | free_threads)
+
+   [HEIGHT_STD_DEV]
    1e-07                                          (sq)
-   1 "TEST_14.vtk"                                (s_vtk | file_vtk)
-   "TEST_14.pts"                                  (prof_ts)
-   "TEST_14.bts"                                  (prof_bs)
-   "TEST_14.res"                                  (res_file)
+
+   [VTK_OUTPUT]
+   0 "TEST_14.vtk"                                (s_vtk | file_vtk)
+     "TEST_14.pts"                                (prof_ts)
+     "TEST_14.bts"                                (prof_bs)
+     "TEST_14.res"                                (res_file)
+   
+   [END_MUSST]
 
 END_FILE       (nothing read after)
 ====================================================================================================

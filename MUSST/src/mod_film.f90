@@ -95,12 +95,10 @@ type(SCALE_SURF) :: scal_tmp !! *object [[SCALE_SURF]]*
 
 ! parameters controlling the iterative process
 logical(kind=I4), parameter :: BC_SPLINE = .false. !! *instead of linearly interpolating the boundary pressures, it can be done in a smoother way. NOT TO BE USED YET.*
-logical(kind=I4), parameter :: SMOOTH_MS = .true.  !! *at the end of the iterative process, the pressure field can be smoothed*
-
 
 public :: ASS, DRHODP_N, FE_FILM, H1_N, H2_N, HG_C, H_N, MU_N, NO_ASS, NO_BC, PEE_C, PEK_C, PRC_TAB, &
           P_N, REY, RHO_N, T_N, VX_N, VY_N, apply_bc_FE_film, apply_bc_FE_film_simple, assemble_in_mat_sol, assembly_FE_film_reynolds, compute_corner_fluxes, &
-          elementary_full_domain_FE_film_reynolds, init_prc_tab, solve_FE_film, create_rect_FE_film, save_fe_field, BC_SPLINE, SMOOTH_MS
+          elementary_full_domain_FE_film_reynolds, init_prc_tab, solve_FE_film, create_rect_FE_film, save_fe_field, BC_SPLINE
 
 contains
 
@@ -236,7 +234,7 @@ contains
       it   = 0
       ! solution loop
       do
-         if (VERBOSE >= 30) write(OPU,*) '   Loop FE ', it
+         if (VERBOSE >= 20) write(OPU,*) '   Loop FE ', it
          if (conv) exit
 
          ! assembly of the system
@@ -252,7 +250,7 @@ contains
          if (mat%first) then
             call solve_syst(mat = mat, &
                            step = 'ana')
-            mat%first = .false. !ù
+            mat%first = .false.
             if (VERBOSE >= 10) write(OPU,*) '   Matrix analyzed, thread ', omp_get_thread_num()
          endif
 
@@ -275,7 +273,7 @@ contains
          ! error computation
          error = (sum(mat%x ** 2) / sum(fe_f%vn(:, P_N) ** 2)) ** (0.5_R8)
          it = it + 1
-         if (VERBOSE >= 30) write(OPU,*) '   Error ', error
+         if (VERBOSE >= 20) write(OPU,*) '   Error ', error
 
          ! convergence check
          if (error <= fe_f%num_p%eps) conv = .true.
@@ -314,7 +312,7 @@ contains
 
          if (it >= fe_f%num_p%it_max) then
             conv = .true.
-            if (VERBOSE >= 30) write(OPU,*) 'maximum number of iteration reached before convergence'
+            if (VERBOSE >= 20) write(OPU,*) 'maximum number of iteration reached before convergence'
          endif
       enddo
 
