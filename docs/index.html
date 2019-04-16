@@ -135,11 +135,11 @@
 		  
           <h1>MUSST</h1>
           <hr>
-<p>&hellip; coming soon</p>
+<p><strong>MUSST</strong> is a set of modern fortran subroutines dedicated to the resolution of some lubrication problems.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
 <li><a href="#brief-description">Brief description</a></li>
-<li><a href="#example-of-use">Example of use</a></li>
+<li><a href="#Installation">Installation</a></li>
 <li><a href="#data-format">Data-format</a></li>
 <li><a href="#limitations">Limitations</a></li>
 <li><a href="#prerequesites">Prerequesites</a></li>
@@ -148,9 +148,41 @@
 <li><a href="#license">License</a></li>
 </ul>
 <h2 id="brief-description">Brief description</h2>
+<p><strong>MUSST</strong> implements the finite element method on Reynolds' equation. It can solve a large variety of problems with standard geometries like sliders, bearings and pockets.
+However, the user can provide the surface heights (as a <code>.sur</code> file for instance), whatever the surface.
+The lubricant that can be modelled are perfect gases, incompressible fluids and compressible fluids (treated as gaz-fluid mixtures <a href="#foot01">[1]</a>). The latter allows for cavitation phenomena to appear.</p>
+<p>The objective of the multiscale approach is to study flows between large rough surfaces needing very fine meshes while maintaining a reasonable computation time.
+For this purpose, the domain is split into a number of subdomains (bottom-scale meshes) connected by a coarse mesh (top-scale).
+The pressure distribution at the top-scale is used as boundary conditions for the bottom-scale problems.
+This pressure is adjusted to ensure global mass flow balance between the contiguous subdomains.</p>
+<p>This multiscale method allows for a significant reduction of the number of operations as well as a satisfactory accuracy of the results if the top-scale mesh is properly fitted to the roughness lateral scale.
+Furthermore the present method is well-suited to parallel computation, leading to much more significant computation time reduction <a href="#foot01">[2]</a>.</p>
 <p><a href="#table-of-contents">top</a></p>
-<h2 id="example-of-use">Example of use</h2>
-<p><a href="#table-of-contents">top</a></p>
+<h2 id="installation">Installation</h2>
+<p><strong>MUSST</strong> needs to call efficient sparse linear system solvers like <a href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS</a>, <a href="http://faculty.cse.tamu.edu/davis/suitesparse.html">UMFPACK</a>,
+<a href="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/#superlu">SuperLU</a> or <a href="http://www.hsl.rl.ac.uk/catalogue/ma48.html">MA48</a>. As the use of the latter is restricted, the <em>MSOLV</em> <code>makefile</code> has to be tuned accordingly.
+If the user can supply the following files :</p>
+<ul>
+<li><code>MSOLV/src/hsl_common90.f90</code></li>
+<li><code>MSOLV/src/hsl_ddeps90.f90</code></li>
+<li><code>MSOLV/src/hsl_ma48d.f90</code></li>
+</ul>
+<p>and</p>
+<ul>
+<li><code>MSOLV/lib/libhsl_ma48.a</code></li>
+</ul>
+<p>then <code>MA48_LIB = 1</code>, otherwise <code>MA48_LIB = 0</code>.</p>
+<p>To build the whole package: <code>$cd MUSST</code> and <code>$make all</code>. To build <strong>MUSST</strong> core, <code>$make</code>, or <code>$make debug</code>, <code>$make gprof</code>, <code>$make clean</code>.</p>
+<p>To launch some test examples:</p>
+<ul>
+<li><code>$./main cfg/TEST_01.dat</code> -&gt; slider bearing,  deterministic, incompressible</li>
+<li><code>$./main cfg/TEST_02.dat</code> -&gt; journal bearing, deterministic, compressible</li>
+<li><code>$./main cfg/TEST_04.dat</code> -&gt; rough surface,   deterministic, compressible</li>
+<li><code>$./main cfg/TEST_05.dat</code> -&gt; pockect bearing, deterministic, perfect gas</li>
+<li><code>$./main cfg/TEST_11.dat</code> -&gt; slider bearing,  multiscale,    compressible</li>
+<li><code>$./main cfg/TEST_14.dat</code> -&gt; rough surface,   multiscale,    compressible</li>
+</ul>
+<p><a href="#Installation">top</a></p>
 <h2 id="data-format">Data format</h2>
 <p><a href="#table-of-contents">top</a></p>
 <h2 id="limitations">Limitations</h2>
@@ -162,6 +194,12 @@
 <h2 id="make">Make</h2>
 <p><a href="#table-of-contents">top</a></p>
 <h2 id="license">License</h2>
+<p id="foot01">[1]</p>
+
+<p>Brunetière N. A General Model for Liquid and Gas Lubrication, Including Cavitation. <em>ASME. J. Tribol.</em> <strong>2017</strong>;<em>140</em>(2):021702-021702-10. <a href="https://doi:10.1115/1.4037355">DOI</a></p>
+<p id="foot01">[2]</p>
+
+<p>Brunetière, N.; Francisco, A. Multiscale Modeling Applied to the Hydrodynamic Lubrication of Rough Surfaces for Computation Time Reduction. <em>Lubricants</em> <strong>2018</strong>, <em>6</em>, 83. <a href="https://doi.org/10.3390/lubricants6030083">DOI</a></p>
         </div>
 		  
         <div class="col-md-4">
@@ -1362,11 +1400,13 @@
                   
                 
                   
-                    <li><a href='./type/mat_ma48.html'>MAT_MA48</a></li>
+                    <li><a href='./type/mat_ma48%7E2.html'>MAT_MA48</a></li>
                   
                 
                   
                     <li><a href="./lists/types.html"><em>All derived types&hellip;</em></a></li>
+                  
+                
                   
                 
                   
@@ -1439,7 +1479,7 @@
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2019-04-03 16:35  
+             on 2019-04-16 14:56  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MUSST was developed by Noël Brunetière - Arthur Francisco</p></div>

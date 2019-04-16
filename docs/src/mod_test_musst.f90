@@ -39,17 +39,21 @@ real(kind=R8)                               :: lx        !! *domain size along \
 real(kind=R8)                               :: ly        !! *domain size along \(y\)*
 real(kind=R8)                               :: sq        !! *roughness height*
 real(kind=R8), dimension(:, :), allocatable :: tab_s     !! *roughness table*
+real(kind=R8), dimension(:, :), allocatable :: tab_sol   !! *rough surface pressure solution*
 
 real(kind=R8), dimension(4) :: bc, bf                 !! *boundary conditions*
 
 real(kind=R4)     :: t1, t2                           !! *cpu time*
 integer(kind=I4)  :: cend, cr, cinit                  !! *real time*
 integer(kind=I4)  :: unit_num_res                     !! *file number*
+integer(kind=I4)  :: compare_solution_file            !! *whether to compare the pressure MS solution to a reference*
 
 character(len=256):: ms_vtk                           !! *output vtk file name*
 character(len=256):: prof_ts, prof_bs                 !! *ts/bs mat profile name*
 character(len=256):: res_file                         !! *result file name*
 character(len=256):: surface_file                     !! *surface file name*
+character(len=256):: pressure_solution_file           !! *pressure solution file for a rough surface*
+
 character(len= 15):: res_dir                          !! *"/out" subdirectory for results*
 
 type(SCALE_SURF) :: scal_tmp                          !! *object [[SCALE_SURF]]*
@@ -58,31 +62,23 @@ integer(kind=I4) :: test_num                          !! *test number*
 logical(kind=I4) :: save_PeK                          !! *save \(x\) Peclet field*
 logical(kind=I4) :: save_PeE                          !! *save \(y\) Peclet field*
 
-public :: run_test
+public :: run_test, read_data, test_num
 
 contains
 
 
    !=========================================================================================
-   !< @note Subroutine to read the data file ```.dat``` in the 'EXEC_MUSST' section and then
-   !        to run the specified test
+   !< @note Subroutine to run the specified test
    !  @endnote
    !-----------------------------------------------------------------------------------------
-   subroutine run_test(test, iunit, dir)
+   subroutine run_test
    implicit none
-   integer(kind=I4),  intent(in) :: test   !! *number of the test to be performed*
-   integer(kind=I4),  intent(in) :: iunit  !! *unit number of the data file*
-   character(len=15), intent(in) :: dir    !! *output directory*
 
-      test_num = test
-
-      call read_data(iunit, dir)
-      ! when ```run_test``` has been launched, *SOLVER_TS* has been determined
       mat%slv_t = SOLVER_TS
 
       call get_unit(unit_num_res) ; open(unit = unit_num_res, file = trim(res_file), status = 'unknown')
 
-      select case(test)
+      select case(test_num)
          case( 1); call test_slider_fe
          case(11); call test_slider_ms
 
@@ -93,7 +89,7 @@ contains
          case(14); call test_rough_ms
 
          case( 5); call test_pocket_fe
-         case default
+         case default ; stop 'Bad test number'
       endselect
 
       close(unit_num_res)
@@ -111,42 +107,172 @@ contains
    integer(kind=I4),  intent(in) :: iunit
    character(len=15), intent(in) :: dir    !! *output directory*
 
+      integer(kind=I4)   :: err_read
+      character(len=064) :: word
+
       res_dir = dir
+      compare_solution_file = 0
 
-      read( iunit,*)
+      data_f%h_0 = -1._R8
+      data_f%h_g = -1._R8
 
-      read(iunit,*) data_f%h_0, data_f%h_g
+      data_f%V_x = 0._R8
+      data_f%V_y = 0._R8
 
-      read(iunit,*) data_f%V_x, data_f%V_y
+      data_f%pb_type = 0
 
-      read(iunit,*) data_f%pb_type
-      read(iunit,*) data_f%fl%fluid_type
-      read(iunit,*) data_f%fl%p_0
-      read(iunit,*) data_f%fl%rho_0
-      read(iunit,*) data_f%fl%mu_0
-      read(iunit,*) data_f%fl%rg
-      read(iunit,*) data_f%fl%lambda
-      read(iunit,*) data_f%fl%T_0
-      read(iunit,*)
-      read(iunit,*) surface_file
-      read(iunit,*) lx, ly
+      data_f%fl%fluid_type = -1
 
-      read(iunit,*) nx, ny
+      data_f%fl%p_0   = -1.e10_R8
+      data_f%fl%rho_0 = -1.e10_R8
+      data_f%fl%mu_0  = -1.e10_R8
 
-      read(iunit,*) n_mac
-      read(iunit,*) bc(1:4)
+      data_f%fl%rg     = 287._R8
+      data_f%fl%lambda = 1.e-5_R8
+      data_f%fl%T_0    = 273._R8
 
-      read(iunit,*)
-      read(iunit,*) num_pts
+      surface_file = "no_file"
 
-      read(iunit,*) num_pbs
+      compare_solution_file  = 0
+      pressure_solution_file = "no_file"
 
-      read(iunit,*) sq
-      read(iunit,*) s_vtk, ms_vtk
+      lx = -1._R8
+      ly = -1._R8
 
-      read(iunit,*) prof_ts
-      read(iunit,*) prof_bs
-      read(iunit,*) res_file
+      nx    = -1
+      ny    = -1
+      n_mac = -1
+
+      bc(1:4) = [1.e5_R8, 1.e5_R8, 1.e5_R8, 1.e5_R8]
+
+      num_pts = NUM_PAR(0._R8, 1.e10_R8, 0, 0)
+      num_pbs = NUM_PAR(0._R8, 1.e10_R8, 0, 0)
+
+      sq = 0._R8
+
+      s_vtk = 0
+
+      ms_vtk   = "no_file"
+      prof_ts  = "no_file"
+      prof_bs  = "no_file"
+      res_file = "no_file"
+
+      do
+         word = repeat(' ', len(word))
+         read(iunit, *, iostat = err_read) word
+
+         if ( index(word, '[END_MUSST]') /= 0                  ) exit
+
+         if ( index(word, '[PROBLEM_TYPE]') /= 0               ) then
+            read(iunit, *) test_num
+            cycle
+         endif
+
+         if ( index(word, '[GAP]') /= 0                        ) then
+            read(iunit,*) data_f%h_0, data_f%h_g
+            cycle
+         endif
+
+         if ( index(word, '[SPEED]') /= 0                      ) then
+            read(iunit,*) data_f%V_x, data_f%V_y
+            cycle
+         endif
+
+         if ( index(word, '[ELASTICITY]') /= 0                 ) then
+            read(iunit,*) data_f%pb_type
+            cycle
+         endif
+
+         if ( index(word, '[FLUID_TYPE]') /= 0                 ) then
+            read(iunit,*) data_f%fl%fluid_type
+            cycle
+         endif
+
+         if ( index(word, '[AMBIENT_PRESSURE]') /= 0           ) then
+            read(iunit,*) data_f%fl%p_0
+            cycle
+         endif
+
+         if ( index(word, '[DENSITY]') /= 0                    ) then
+            read(iunit,*) data_f%fl%rho_0
+            cycle
+         endif
+
+         if ( index(word, '[VISCOSITY]') /= 0                  ) then
+            read(iunit,*) data_f%fl%mu_0
+            cycle
+         endif
+
+         if ( index(word, '[GAZ_CONSTANT]') /= 0               ) then
+            read(iunit,*) data_f%fl%rg
+            cycle
+         endif
+
+         if ( index(word, '[MIXTURE_TRANSITION]') /= 0         ) then
+            read(iunit,*) data_f%fl%lambda
+            cycle
+         endif
+
+         if ( index(word, '[AMBIENT_TEMPERATURE]') /= 0        ) then
+            read(iunit,*) data_f%fl%T_0
+            cycle
+         endif
+
+         if ( index(word, '[ROUGH_SURFACE]') /= 0              ) then
+            read(iunit,*) surface_file
+            cycle
+         endif
+
+         if ( index(word, '[ROUGH_SURFACE_SOLUTION]') /= 0     ) then
+            read(iunit,*) compare_solution_file
+            read(iunit,*) pressure_solution_file
+            cycle
+         endif
+
+         if ( index(word, '[LENGTH]') /= 0                     ) then
+            read(iunit,*) lx, ly
+            cycle
+         endif
+
+         if ( index(word, '[NUMBER_NODES]') /= 0               ) then
+            read(iunit,*) nx, ny
+            cycle
+         endif
+
+         if ( index(word, '[NUMBER_MACRO_ELEMENTS]') /= 0      ) then
+            read(iunit,*) n_mac
+            cycle
+         endif
+
+         if ( index(word, '[BOUNDARY_PRESSURES]') /= 0         ) then
+            read(iunit,*) bc(1:4)
+            cycle
+         endif
+
+         if ( index(word, '[NUMERICAL_TS_PARAMETERS]') /= 0    ) then
+            read(iunit,*) num_pts
+            cycle
+         endif
+
+         if ( index(word, '[NUMERICAL_BS_PARAMETERS]') /= 0    ) then
+            read(iunit,*) num_pbs
+            cycle
+         endif
+
+         if ( index(word, '[HEIGHT_STD_DEV]') /= 0             ) then
+            read(iunit,*) sq
+            cycle
+         endif
+
+         if ( index(word, '[VTK_OUTPUT]') /= 0                 ) then
+            read(iunit,*) s_vtk, ms_vtk
+            read(iunit,*) prof_ts
+            read(iunit,*) prof_bs
+            read(iunit,*) res_file
+            cycle
+         endif
+
+      enddo
 
       ms_vtk   = "out/"//res_dir//"/"//trim(ms_vtk  )
       prof_ts  = "out/"//res_dir//"/"//trim(prof_ts )
@@ -445,7 +571,7 @@ contains
    implicit none
       allocate(tab_s(nx, ny))
       tab_s = 0._R8
-      call read_surf(trim(surface_file), sq, tab_s, scal_tmp)
+      call read_surf(nom_fic=trim(surface_file), mu=1._R8, sq=sq, tab_s=tab_s, scal=scal_tmp)
    return
    endsubroutine init_rough_prob
 
@@ -549,6 +675,8 @@ contains
    !-----------------------------------------------------------------------------------------
    subroutine solve_ms_prob
    implicit none
+      real(kind=R8), dimension(:, :), allocatable :: tab
+
       call system_clock(count=cinit)
       call cpu_time(t1)
          call multi_scale_solve_fe_film(ms_fe_f, ms_mat, bc)
@@ -576,6 +704,51 @@ contains
                        file_name = "out/"//res_dir//"/"//"ms_pressure.sur",   & !
                             code = P_N,                                       & !
                            nodal = .true.                                     )
+
+      if (compare_solution_file /= 0) then
+         if ( allocated(tab_sol) ) deallocate(tab_sol)
+         call read_surf(nom_fic = trim(pressure_solution_file),   & !
+                             mu = -1._R8,                         & !
+                             sq = -1._R8,                         & !
+                          tab_s = tab_sol,                        & !
+                           scal = scal_tmp)
+
+         if ( allocated(tab_s) ) deallocate(tab_s)
+         call ms_fe_f_2_mat(ms_fe_f = ms_fe_f,  & !
+                               code = P_N,      & !
+                              nodal = .true.,   & !
+                                mat = tab_s)
+
+         allocate( tab(1:nx, 1:ny) )
+         tab(1:nx, 1:ny) = abs(tab_s(1:nx, 1:ny) -tab_sol(1:nx, 1:ny))
+
+         scal_tmp%zlength_unit = 'Pa'
+         scal_tmp%dz_unit      = 'Pa'
+         call write_surf(nom_fic = "out/"//res_dir//"/"//"compare_pressure.sur",    & !
+                           tab_s = tab(1:nx, 1:ny),                                 & !
+                            scal = scal_tmp)
+
+         where (tab_s < data_f%fl%p_0 .and. tab_sol > data_f%fl%p_0)
+            tab = -1._R8
+         elsewhere (tab_s > data_f%fl%p_0 .and. tab_sol < data_f%fl%p_0)
+            tab = +1._R8
+         elsewhere (tab_s < data_f%fl%p_0 .and. tab_sol < data_f%fl%p_0)
+            tab =  0._R8
+         elsewhere
+            tab = -2._R8
+         endwhere
+
+         scal_tmp%zlength_unit = '  '
+         scal_tmp%dz_unit      = '  '
+         call write_surf(nom_fic = "out/"//res_dir//"/"//"compare_cavitation.sur",  & !
+                           tab_s = tab(1:nx, 1:ny),                                 & !
+                            scal = scal_tmp)
+
+      endif
+
+      if ( allocated(tab    ) ) deallocate(tab    )
+      if ( allocated(tab_s  ) ) deallocate(tab_s  )
+      if ( allocated(tab_sol) ) deallocate(tab_sol)
    return
    endsubroutine solve_ms_prob
 

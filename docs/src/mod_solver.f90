@@ -14,7 +14,9 @@ use data_arch,       only : I4, I8, R8, EPS_R8, HIG_R8, OPU
 use gen_param,       only : SOLV_MESS, NO_MESS, PRINT_MESS
 use sort_arrays,     only : sort_int_1real, sort_int_1int_1real
 !-------------------------------------------------
+#if WITH_MA48
 use hsl_ma48_double
+#endif
 !-------------------------------------------------
 use sulu_wrapper,  MAT_SULU => SULU_ENV      , &
            SULU_SAMEPATTERN => SAMEPATTERN   , &
@@ -45,6 +47,7 @@ implicit none
 
 private
 
+#if WITH_MA48
 type MAT_MA48
 !! <span style="color:green">All the stuff needed by *HSL_MA48*</span>
    type(ZD11_TYPE)    :: zmat
@@ -56,6 +59,10 @@ type MAT_MA48
    integer(kind=I4)   :: fast
    real(kind=R8), dimension(2):: resid
 endtype MAT_MA48
+#else
+type MAT_MA48
+endtype MAT_MA48
+#endif
 
 type MAT_UMFP
 !! <span style="color:green">All the stuff needed by *UMFPACK*</span>
@@ -160,6 +167,7 @@ contains
       ! check solver type
       select case (mat%slv_t)
          case(MA48)
+#if WITH_MA48
             call ma48_initialize(factors = mat%matma48%fact, &
                                  control = mat%matma48%ctrl)
             select case(SOLV_MESS)
@@ -170,6 +178,9 @@ contains
                case(PRINT_MESS:)
                   mat%matma48%ctrl%ldiag = +2
             endselect
+#else
+   stop 'MA48_LIB not defined'
+#endif
 
          case(MUMP)
             call mpi_init(ierr)
@@ -238,6 +249,7 @@ contains
       select case(mat%slv_t)
 
          case(MA48)
+#if WITH_MA48
             mat%matma48%zmat%row => mat%irow
             mat%matma48%zmat%col => mat%jcol
             mat%matma48%zmat%val => mat%a_elt
@@ -255,7 +267,9 @@ contains
                write(OPU,*) 'Failure of ma48_analyse with ainfop%flag = ', mat%matma48%ainf%flag
                stop
             endif
-
+#else
+   stop 'MA48_LIB not defined'
+#endif
          case(MUMP)
             mat%matmump%eltptr   => mat%eltptr
             mat%matmump%eltvar   => mat%eltvar
@@ -311,6 +325,7 @@ contains
       select case(mat%slv_t)
 
          case(MA48)
+#if WITH_MA48
             call ma48_factorize( matrix  = mat%matma48%zmat, &
                                  factors = mat%matma48%fact, &
                                  control = mat%matma48%ctrl, &
@@ -320,6 +335,9 @@ contains
                write(OPU,*) 'Failure of ma48_factorize with finfo%flag = ', mat%matma48%finf%flag
                stop
             endif
+#else
+   stop 'MA48_LIB not defined'
+#endif
 
          case(MUMP)
             mat%matmump%job = 2
@@ -359,6 +377,7 @@ contains
       select case(mat%slv_t)
 
          case(MA48)
+#if WITH_MA48
             call ma48_solve(matrix = mat%matma48%zmat,   &
                            factors = mat%matma48%fact,   &
                                rhs = mat%b,              &
@@ -367,6 +386,9 @@ contains
                              sinfo = mat%matma48%sinf,   &
                              resid = mat%matma48%resid,  &
                              error = mat%error)
+#else
+   stop 'MA48_LIB not defined'
+#endif
 
          case(MUMP)
             mat%matmump%job = 3
@@ -429,7 +451,11 @@ contains
       select case(mat%slv_t)
 
          case(MA48)
+#if WITH_MA48
             continue
+#else
+   stop 'MA48_LIB not defined'
+#endif
 
          case(MUMP)
             continue
@@ -463,6 +489,7 @@ contains
       select case(mat%slv_t)
 
          case(MA48)
+#if WITH_MA48
             nullify( mat%matma48%zmat%row )
             nullify( mat%matma48%zmat%col )
             nullify( mat%matma48%zmat%val )
@@ -471,6 +498,9 @@ contains
                                control = mat%matma48%ctrl, &
                                info    = ierr)
             deallocate( mat%b, mat%x )
+#else
+   stop 'MA48_LIB not defined'
+#endif
 
          case(MUMP)
             if ( mat%matmump%myid == 0 )then
@@ -563,7 +593,11 @@ contains
       select case(mat%slv_t)
 
          case(MA48)  ! Triplet form: irow, jcol, a_elt
+#if WITH_MA48
             continue
+#else
+   stop 'MA48_LIB not defined'
+#endif
 
          case(MUMP)  ! Compressed row, elemental entries chosen: eltptr, eltvar, a_elt
             continue

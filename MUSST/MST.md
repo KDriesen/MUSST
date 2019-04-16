@@ -14,7 +14,7 @@ include: ./inc
          ../MSOLV/inc
 media_dir:  ./img
 favicon:    ./img/logo.png
-output_dir: ./doc
+output_dir: ../docs
 exclude_dir: ./src/arch
              ../SPLIN/src/arch/
 exclude: prg.f90
