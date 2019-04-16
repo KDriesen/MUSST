@@ -90,7 +90,9 @@ License
 -------
 
 
-<p id="foot01">[1]</p> Brunetière N. A General Model for Liquid and Gas Lubrication, Including Cavitation. *ASME. J. Tribol.* **2017**;*140*(2):021702-021702-10. [DOI](https://doi:10.1115/1.4037355)
+<p id="foot01">[1]</p>
+Brunetière N. A General Model for Liquid and Gas Lubrication, Including Cavitation. *ASME. J. Tribol.* **2017**;*140*(2):021702-021702-10. [DOI](https://doi:10.1115/1.4037355)
 
-<p id="foot01">[2]</p> Brunetière, N.; Francisco, A. Multiscale Modeling Applied to the Hydrodynamic Lubrication of Rough Surfaces for Computation Time Reduction. *Lubricants* **2018**, *6*, 83. [DOI](https://doi.org/10.3390/lubricants6030083)
+<p id="foot01">[2]</p>
+Brunetière, N.; Francisco, A. Multiscale Modeling Applied to the Hydrodynamic Lubrication of Rough Surfaces for Computation Time Reduction. *Lubricants* **2018**, *6*, 83. [DOI](https://doi.org/10.3390/lubricants6030083)
 
