@@ -1,6 +1,5 @@
-[!INCLUDE[sample include file](./MUSST/README.md)]
 
-[!WARNING]
+{% ./MUSST/README.md %}
 
 Table of Contents
 -----------------
