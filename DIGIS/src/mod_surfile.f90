@@ -458,7 +458,7 @@ contains
 
    !=========================================================================================
    !> @note
-   !   [[OBJ_SURF]] initialization, every unit is µm
+   !   [[OBJ_SURF]] initialization, every unit is m
    ! @endnote
    !-----------------------------------------------------------------------------------------
    subroutine init_scal(scal, nx, ny, lx, ly, unit_z)
