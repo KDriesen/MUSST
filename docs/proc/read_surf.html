@@ -218,7 +218,7 @@ public subroutine read_surf(nom_fic, mu, sq, tab_s, scal)
     <p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>Subroutine that opens a surface file <code>.sur</code> or <code>.dat</code></p>
 <p>The heights are centred, scaled then put into a vector.
  </p></div>
-<p></p><div class="alert alert-warning" role="alert"><h4>Warning</h4><p>If the scale factor <code>sq</code> is negative, the heights are not scaled when reading <code>.sur</code>
+<p><div class="alert alert-warning" role="alert"><h4>Warning</h4><p>If the scale factor <code>sq</code> is negative, the heights are not scaled when reading <code>.sur</code>
  </p></div>
 <p></p><div class="alert alert-warning" role="alert"><h4>Warning</h4><p>By default, the <code>.sur</code> header is dumped
  </p></div>
@@ -343,18 +343,18 @@ public subroutine read_surf(nom_fic, mu, sq, tab_s, scal)
 <polygon fill="none" stroke="black" points="58,-66 3.55271e-15,-66 3.55271e-15,-42 58,-42 58,-66"/>
 <text text-anchor="middle" x="29" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">read_surf</text>
 </g>
-<!-- proc~get_unit -->
-<g id="proc~~read_surf~~CallsGraph_node2" class="node"><title>proc~get_unit</title>
-<g id="a_proc~~read_surf~~CallsGraph_node2"><a xlink:href=".././proc/get_unit.html" xlink:title="get_unit">
-<polygon fill="#d9534f" stroke="#d9534f" points="162,-108 108,-108 108,-84 162,-84 162,-108"/>
-<text text-anchor="middle" x="135" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_unit</text>
+<!-- proc~trans_surf_tab -->
+<g id="proc~~read_surf~~CallsGraph_node2" class="node"><title>proc~trans_surf_tab</title>
+<g id="a_proc~~read_surf~~CallsGraph_node2"><a xlink:href=".././proc/trans_surf_tab.html" xlink:title="trans_surf_tab">
+<polygon fill="#d9534f" stroke="#d9534f" points="176,-108 94,-108 94,-84 176,-84 176,-108"/>
+<text text-anchor="middle" x="135" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">trans_surf_tab</text>
 </a>
 </g>
 </g>
-<!-- proc~read_surf&#45;&gt;proc~get_unit -->
-<g id="proc~~read_surf~~CallsGraph_edge1" class="edge"><title>proc~read_surf&#45;&gt;proc~get_unit</title>
-<path fill="none" stroke="#ff0000" d="M58.1439,-65.3658C70.6329,-70.4094 85.4659,-76.3997 98.6885,-81.7396"/>
-<polygon fill="#ff0000" stroke="#ff0000" points="97.3924,-84.9908 107.975,-85.4901 100.014,-78.5001 97.3924,-84.9908"/>
+<!-- proc~read_surf&#45;&gt;proc~trans_surf_tab -->
+<g id="proc~~read_surf~~CallsGraph_edge1" class="edge"><title>proc~read_surf&#45;&gt;proc~trans_surf_tab</title>
+<path fill="none" stroke="#ff0000" d="M58.1439,-65.3658C69.3461,-69.8898 82.4342,-75.1754 94.5545,-80.0701"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="93.4296,-83.3904 104.013,-83.8897 96.0509,-76.8997 93.4296,-83.3904"/>
 </g>
 <!-- proc~lower -->
 <g id="proc~~read_surf~~CallsGraph_node3" class="node"><title>proc~lower</title>
@@ -369,44 +369,44 @@ public subroutine read_surf(nom_fic, mu, sq, tab_s, scal)
 <path fill="none" stroke="#ff0000" d="M58.1439,-54C70.3904,-54 84.8908,-54 97.9165,-54"/>
 <polygon fill="#ff0000" stroke="#ff0000" points="97.9755,-57.5001 107.975,-54 97.9755,-50.5001 97.9755,-57.5001"/>
 </g>
-<!-- proc~trans_surf_tab -->
-<g id="proc~~read_surf~~CallsGraph_node4" class="node"><title>proc~trans_surf_tab</title>
-<g id="a_proc~~read_surf~~CallsGraph_node4"><a xlink:href=".././proc/trans_surf_tab.html" xlink:title="trans_surf_tab">
-<polygon fill="#d9534f" stroke="#d9534f" points="176,-24 94,-24 94,-0 176,-0 176,-24"/>
-<text text-anchor="middle" x="135" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">trans_surf_tab</text>
+<!-- proc~get_unit -->
+<g id="proc~~read_surf~~CallsGraph_node4" class="node"><title>proc~get_unit</title>
+<g id="a_proc~~read_surf~~CallsGraph_node4"><a xlink:href=".././proc/get_unit.html" xlink:title="get_unit">
+<polygon fill="#d9534f" stroke="#d9534f" points="162,-24 108,-24 108,-0 162,-0 162,-24"/>
+<text text-anchor="middle" x="135" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_unit</text>
 </a>
 </g>
 </g>
-<!-- proc~read_surf&#45;&gt;proc~trans_surf_tab -->
-<g id="proc~~read_surf~~CallsGraph_edge3" class="edge"><title>proc~read_surf&#45;&gt;proc~trans_surf_tab</title>
-<path fill="none" stroke="#ff0000" d="M58.1439,-42.6342C69.3461,-38.1102 82.4342,-32.8246 94.5545,-27.9299"/>
-<polygon fill="#ff0000" stroke="#ff0000" points="96.0509,-31.1003 104.013,-24.1103 93.4296,-24.6096 96.0509,-31.1003"/>
+<!-- proc~read_surf&#45;&gt;proc~get_unit -->
+<g id="proc~~read_surf~~CallsGraph_edge3" class="edge"><title>proc~read_surf&#45;&gt;proc~get_unit</title>
+<path fill="none" stroke="#ff0000" d="M58.1439,-42.6342C70.6329,-37.5906 85.4659,-31.6003 98.6885,-26.2604"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="100.014,-29.4999 107.975,-22.5099 97.3924,-23.0092 100.014,-29.4999"/>
 </g>
 <!-- proc~unit2iuc -->
 <g id="proc~~read_surf~~CallsGraph_node5" class="node"><title>proc~unit2iuc</title>
 <g id="a_proc~~read_surf~~CallsGraph_node5"><a xlink:href=".././proc/unit2iuc.html" xlink:title="unit2IUc">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="266,-24 212,-24 212,-0 266,-0 266,-24"/>
-<text text-anchor="middle" x="239" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">unit2IUc</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="266,-108 212,-108 212,-84 266,-84 266,-108"/>
+<text text-anchor="middle" x="239" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">unit2IUc</text>
 </a>
 </g>
 </g>
 <!-- proc~trans_surf_tab&#45;&gt;proc~unit2iuc -->
 <g id="proc~~read_surf~~CallsGraph_edge4" class="edge"><title>proc~trans_surf_tab&#45;&gt;proc~unit2iuc</title>
-<path fill="none" stroke="#0000ff" d="M176.02,-12C184.497,-12 193.398,-12 201.726,-12"/>
-<polygon fill="#0000ff" stroke="#0000ff" points="201.894,-15.5001 211.894,-12 201.894,-8.5001 201.894,-15.5001"/>
+<path fill="none" stroke="#ff0000" d="M176.02,-96C184.497,-96 193.398,-96 201.726,-96"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="201.894,-99.5001 211.894,-96 201.894,-92.5001 201.894,-99.5001"/>
 </g>
 <!-- proc~unit2iuf -->
 <g id="proc~~read_surf~~CallsGraph_node6" class="node"><title>proc~unit2iuf</title>
 <g id="a_proc~~read_surf~~CallsGraph_node6"><a xlink:href=".././proc/unit2iuf.html" xlink:title="unit2IUf">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="356,-24 302,-24 302,-0 356,-0 356,-24"/>
-<text text-anchor="middle" x="329" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">unit2IUf</text>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="356,-108 302,-108 302,-84 356,-84 356,-108"/>
+<text text-anchor="middle" x="329" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">unit2IUf</text>
 </a>
 </g>
 </g>
 <!-- proc~unit2iuc&#45;&gt;proc~unit2iuf -->
 <g id="proc~~read_surf~~CallsGraph_edge5" class="edge"><title>proc~unit2iuc&#45;&gt;proc~unit2iuf</title>
-<path fill="none" stroke="#ff0000" d="M266.403,-12C274.393,-12 283.311,-12 291.824,-12"/>
-<polygon fill="#ff0000" stroke="#ff0000" points="291.919,-15.5001 301.919,-12 291.919,-8.5001 291.919,-15.5001"/>
+<path fill="none" stroke="#ff0000" d="M266.403,-96C274.393,-96 283.311,-96 291.824,-96"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="291.919,-99.5001 301.919,-96 291.919,-92.5001 291.919,-99.5001"/>
 </g>
 </g>
 </svg>
@@ -675,7 +675,7 @@ public subroutine read_surf(nom_fic, mu, sq, tab_s, scal)
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/cmacmackin/ford">FORD</a>
-             on 2019-04-16 14:56  
+             on 2019-04-16 15:48  
           </p>
         </div>
         <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> MUSST was developed by Noël Brunetière - Arthur Francisco</p></div>

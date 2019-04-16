@@ -785,12 +785,12 @@ contains
       real(kind=R8), dimension(14) :: vcal
 
       !============================================
-      !> {!src/inc_doc/Reynolds_discretization.md!}
+      !> {!MUSST/src/inc_doc/Reynolds_discretization.md!}
       !============================================
 
 
       !============================================
-      !> {!src/inc_doc/upwinding_coefficients.md!}
+      !> {!MUSST/src/inc_doc/upwinding_coefficients.md!}
       !============================================
 
       gaz = (fe_f%data_f%fl%fluid_type==GP)
@@ -920,7 +920,7 @@ contains
       endif
 
       !=============================================
-      !> {!src/inc_doc/precomputed_integrations.md!}
+      !> {!MUSST/src/inc_doc/precomputed_integrations.md!}
       !=============================================
 
       do i = 1, ng
@@ -1003,7 +1003,7 @@ contains
       enddo
 
       !=============================================
-      !> {!css/button.html!}
+      !> {!MUSST/css/button.html!}
       !=============================================
    return
    endsubroutine compute_prc_tables_reynolds_supg
