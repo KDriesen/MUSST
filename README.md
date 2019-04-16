@@ -1,5 +1,5 @@
 
-{% include_relative ./MUSST/README.md %}
+{% include_relative MUSST/README.md %}
 
 Table of Contents
 -----------------
